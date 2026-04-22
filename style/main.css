@@ -740,3 +740,38 @@ address   { font-style: normal; }
   .stat-card__num { font-size: 1.375rem; }
   .doc-img-grid { grid-template-columns: 1fr; }
 }
+
+/* ── YANDEX REVIEWS CARDS ── */
+.ya-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.ya-card {
+  background: var(--surface);
+  border: 1px solid var(--bd);
+  border-radius: var(--r-xl);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: box-shadow var(--ease), transform var(--ease);
+}
+.ya-card:hover { box-shadow: var(--sh-hover); transform: translateY(-3px); }
+.ya-card__header { display: flex; align-items: center; gap: .875rem; }
+.ya-card__icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: #fff5f3; border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(252,63,29,.15);
+}
+.ya-card__city { font-family: var(--fh); font-size: .9375rem; font-weight: 700; color: var(--tx1); }
+.ya-card__addr { font-size: .8125rem; color: var(--tx3); margin-top: .125rem; }
+.ya-card__btn  { margin-top: auto; justify-content: center; }
+
+@media (max-width: 860px) {
+  .ya-reviews-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .ya-reviews-grid { grid-template-columns: 1fr; }
+}
