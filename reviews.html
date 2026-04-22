@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отзывы — Автошкола «Лаура»</title>
+  <meta name="description" content="Отзывы учеников автошколы Лаура">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="header__inner container">
+      <a href="index.html" class="logo">
+        <span class="logo__mark">Л</span>
+        <span class="logo__text">ЛАУРА</span>
+      </a>
+      <nav class="header__nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+          <li class="nav__item"><a href="start.html" class="nav__link">Начать обучение</a></li>
+          <li class="nav__item"><a href="schedule.html" class="nav__link">Расписание</a></li>
+          <li class="nav__item"><a href="reviews.html" class="nav__link  nav__link--active">Отзывы</a></li>
+          <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <a href="tel:88123381008" class="header__phone">8 (812) 338-10-08</a>
+        <button class="btn btn--primary" onclick="openModal()">Записаться</button>
+      </div>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul class="mobile-menu__list">
+        <li><a href="index.html" class="mobile-menu__link">Главная</a></li>
+        <li><a href="start.html" class="mobile-menu__link">Начать обучение</a></li>
+        <li><a href="schedule.html" class="mobile-menu__link">Расписание</a></li>
+        <li><a href="reviews.html" class="mobile-menu__link">Отзывы</a></li>
+        <li><a href="contacts.html" class="mobile-menu__link">Контакты</a></li>
+      </ul>
+      <a href="tel:88123381008" class="mobile-menu__phone">8 (812) 338-10-08</a>
+      <button class="btn btn--primary" style="width:100%" onclick="openModal()">Записаться</button>
+    </div>
+  </header>
+  <main>
+    <section class="pg-hero">
+      <div class="pg-hero__grid" aria-hidden="true"></div>
+      <div class="container pg-hero__wrap">
+        <span class="section__label">Мнения учеников</span>
+        <h1 class="pg-hero__title">Отзывы</h1>
+        <p class="pg-hero__sub">Настоящие слова настоящих людей — тех, кто уже получил права вместе с нами.</p>
+        <div class="rev-stats">
+          <div class="rev-stat">
+            <div class="rev-stars"><svg width="20" height="20" viewBox="0 0 20 20" fill="#d4401a"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="20" height="20" viewBox="0 0 20 20" fill="#d4401a"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="20" height="20" viewBox="0 0 20 20" fill="#d4401a"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="20" height="20" viewBox="0 0 20 20" fill="#d4401a"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="20" height="20" viewBox="0 0 20 20" fill="#d4401a"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg></div>
+            <span class="rev-stat__lbl">Оценка учеников</span>
+          </div>
+          <div class="rev-stat__div" aria-hidden="true"></div>
+          <a href="https://vk.com/lauraschool" target="_blank" rel="noopener" class="rev-stat" style="text-decoration:none">
+            <span class="rev-stat__num" style="color:var(--accent)">ВКонтакте</span>
+            <span class="rev-stat__lbl">Перейти в нашу группу →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--bg)">
+      <div class="container">
+        <div class="section__header"><span class="section__label">Избранные отзывы</span><h2 class="section__title">Что говорят ученики</h2></div>
+        <div class="reviews-masonry">          <article class="rev-card rev-card--feat">
+            <div class="rev-card__hdr">
+              <div class="rev-card__av av-a">М</div>
+              <div><div class="rev-card__name">Мария К.</div><div class="rev-card__meta">Петергоф · Категория B</div></div>
+              <div class="rev-card__stars"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg></div>
+            </div>
+            <blockquote class="rev-card__text">Отличная автошкола! Инструктор терпеливый, спокойный, всегда объяснит каждый манёвр. Сдала с первого раза. Очень рекомендую!</blockquote>
+            <div class="rev-card__src"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#0077FF;border-radius:3px;font-size:9px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0;line-height:1">VK</span> ВКонтакте</div>
+          </article>          <article class="rev-card">
+            <div class="rev-card__hdr">
+              <div class="rev-card__av av-b">А</div>
+              <div><div class="rev-card__name">Алексей В.</div><div class="rev-card__meta">Ломоносов · Категория B</div></div>
+              <div class="rev-card__stars"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg></div>
+            </div>
+            <blockquote class="rev-card__text">Небольшие группы — большой плюс. Маршрут в Ломоносове отрабатывали заранее — это сильно помогло. Сдал с первой попытки.</blockquote>
+            <div class="rev-card__src"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#0077FF;border-radius:3px;font-size:9px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0;line-height:1">VK</span> ВКонтакте</div>
+          </article>          <article class="rev-card">
+            <div class="rev-card__hdr">
+              <div class="rev-card__av av-c">Е</div>
+              <div><div class="rev-card__name">Екатерина Н.</div><div class="rev-card__meta">Петергоф · Категория B</div></div>
+              <div class="rev-card__stars"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg></div>
+            </div>
+            <blockquote class="rev-card__text">Очень боялась за руль, но инструктор был невероятно терпелив. Никакого давления, всё по делу. Спасибо за профессионализм!</blockquote>
+            <div class="rev-card__src"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#0077FF;border-radius:3px;font-size:9px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0;line-height:1">VK</span> ВКонтакте</div>
+          </article>          <article class="rev-card">
+            <div class="rev-card__hdr">
+              <div class="rev-card__av av-d">Д</div>
+              <div><div class="rev-card__name">Дмитрий С.</div><div class="rev-card__meta">Сосновый Бор · Категория B</div></div>
+              <div class="rev-card__stars"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg></div>
+            </div>
+            <blockquote class="rev-card__text">Хороший автодром, чёткие объяснения. Занятия шли строго по расписанию. Всё организованно, доволен.</blockquote>
+            <div class="rev-card__src"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#0077FF;border-radius:3px;font-size:9px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0;line-height:1">VK</span> ВКонтакте</div>
+          </article>          <article class="rev-card">
+            <div class="rev-card__hdr">
+              <div class="rev-card__av av-e">О</div>
+              <div><div class="rev-card__name">Ольга П.</div><div class="rev-card__meta">Ломоносов · Категория B</div></div>
+              <div class="rev-card__stars"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg></div>
+            </div>
+            <blockquote class="rev-card__text">Особенно понравилось, что сдавали на том же автомобиле — меньше стресса. Уже порекомендовала подруге!</blockquote>
+            <div class="rev-card__src"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#0077FF;border-radius:3px;font-size:9px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0;line-height:1">VK</span> ВКонтакте</div>
+          </article>          <article class="rev-card">
+            <div class="rev-card__hdr">
+              <div class="rev-card__av av-f">И</div>
+              <div><div class="rev-card__name">Иван Т.</div><div class="rev-card__meta">Петергоф · Категория A</div></div>
+              <div class="rev-card__stars"><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg></div>
+            </div>
+            <blockquote class="rev-card__text">Брал права на мотоцикл. Программа насыщенная. Зато после обучения чувствуешь себя по-настоящему уверенно!</blockquote>
+            <div class="rev-card__src"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#0077FF;border-radius:3px;font-size:9px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0;line-height:1">VK</span> ВКонтакте</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--surface)">
+      <div class="container">
+        <div class="vk-section">
+          <div>
+            <div class="vk-logo">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="10" fill="#0077FF"/>
+                <path d="M38.68 16.48c.24-.8 0-1.38-.84-1.38h-4.12c-.7 0-1.03.37-1.27 1.07 0 0-1.48 4.36-3.58 7.19-.68.93-.99 1.23-1.36 1.23-.19 0-.45-.3-.45-1.1V16.48c0-.76-.19-1.38-1.19-1.38h-6.47c-.76 0-1.21.6-1.21 1.16 0 1.22 1.69 1.5 1.86 4.92v7.42c0 .97-.17 1.14-.54 1.14-1 0-3.44-4.39-4.88-9.42-.28-.97-.57-1.22-1.28-1.22H9.69c-.82 0-.97.37-.97 1.07 0 1 1.01 5.95 4.71 12.5C15.78 36.66 19.44 38 22.77 38c1.96 0 2.2-.44 2.2-1.2v-3.84c0-.84.17-1 .73-1 .41 0 1.11.22 2.76 1.94C30.22 36 30.59 38 31.68 38h4.12c.82 0 1.23-.44.99-1.3-.26-.86-1.22-2.1-2.48-3.57-.69-.84-1.72-1.74-2.03-2.15-.41-.55-.29-.79 0-1.27 0 0 3.61-5.2 3.98-6.96.19-.62.12-1.27-.84-1.27z" fill="white"/>
+              </svg>
+            </div>
+            <span class="section__label">Официальная группа</span>
+            <h2 class="section__title" style="margin-top:.5rem">Читайте свежие отзывы во ВКонтакте</h2>
+            <p style="color:var(--tx2);font-size:.9375rem;line-height:1.65;margin-top:1rem">Все отзывы — в нашей официальной группе ВКонтакте. Там же можно задать вопрос и оставить свой отзыв после обучения.</p>
+            <div class="vk-btns">
+              <a href="https://vk.com/topic-187835462_40438621" target="_blank" rel="noopener" class="btn btn--primary btn--large">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.547 7h-3.29a.743.743 0 00-.655.392s-1.312 2.416-1.734 3.23C14.734 12.813 14 12.126 14 11.11V7.603A1.104 1.104 0 0012.896 6.5h-2.474a1.982 1.982 0 00-1.75.813s1.255-.204 1.255 1.49c0 .42.022 1.626.04 2.64a.73.73 0 01-1.272.503 21.54 21.54 0 01-2.498-4.543.693.693 0 00-.63-.403h-2.99a.508.508 0 00-.48.685C3.005 10.175 6.918 18 11.38 18h1.878a.742.742 0 00.742-.742v-1.135a.73.73 0 011.23-.53l2.247 2.112a1.09 1.09 0 00.746.295h2.953c1.424 0 1.424-.988.647-1.753-.546-.538-2.518-2.617-2.518-2.617a1.02 1.02 0 01-.078-1.323c.637-.84 1.68-2.212 2.122-2.8.603-.804 1.697-2.507.197-2.507z"/></svg>
+                Все отзывы
+              </a>
+              <a href="https://vk.com/lauraschool" target="_blank" rel="noopener" class="btn btn--outline btn--large">Группа ВКонтакте</a>
+            </div>
+          </div>
+          <div class="vk-widget-wrap">
+            <div id="vk_groups"></div>
+            <script>
+              (function(){
+                var d=document,s=d.createElement('script');
+                s.src='https://vk.com/js/api/openapi.js?169';
+                s.async=true;
+                s.onload=function(){
+                  try{ VK.Widgets.Group('vk_groups',{mode:4,wide:1,color1:'FFFFFF',color2:'000000',color3:'D4401A'},187835462); }catch(e){}
+                };
+                (d.head||d.body).appendChild(s);
+              })();
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="cta">
+      <div class="container cta__inner">
+        <div class="cta__body">
+          <h2 class="cta__title">Начни учиться<br>уже сегодня</h2>
+          <p class="cta__text">Новая группа стартует в начале и конце каждого месяца. Пробное занятие — бесплатно.</p>
+          <div class="cta__btns">
+            <button class="btn btn--white btn--large" onclick="openModal()">Записаться на курс</button>
+            <a href="tel:88123381008" class="btn btn--outline-white btn--large">8 (812) 338-10-08</a>
+          </div>
+        </div>
+        <div class="cta__rings" aria-hidden="true">
+          <div class="cta__ring cta__ring--1"></div>
+          <div class="cta__ring cta__ring--2"></div>
+          <div class="cta__ring cta__ring--3"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="logo">
+            <span class="logo__mark">Л</span>
+            <span class="logo__text" style="color:#fff">ЛАУРА</span>
+          </a>
+          <p class="footer__tag">Учим, а не просто<br>«откатываем часы»</p>
+        </div>
+        <div>
+          <p class="footer__ttl">Навигация</p>
+          <ul class="footer__list">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="start.html">Начать обучение</a></li>
+            <li><a href="schedule.html">Расписание</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="documents.html">Документы</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__ttl">Контакты</p>
+          <ul class="footer__list">
+            <li><a href="tel:88123381008">8 (812) 338-10-08</a></li>
+            <li><a href="tel:89118481008">8 (911) 848-10-08</a></li>
+            <li><a href="mailto:mail@lauraschool.ru">mail@lauraschool.ru</a></li>
+          </ul>
+          <p class="footer__hrs">Пн–Сб: 10:00–20:00<br>Воскресенье: выходной</p>
+        </div>
+        <div class="footer__addr-col">
+          <p class="footer__ttl">Адреса</p>
+          <ul class="footer__list">
+            <li>г. Петергоф, пр. Санкт-Петербургский, 60, офис 225</li>
+            <li>г. Ломоносов, ул. Победы, 24, офис 322</li>
+            <li>г. Сосновый Бор, ул. Петра Великого, 10а, каб. 57</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bot">
+      <div class="container">
+        <p>© 2024 Автошкола «Лаура». Все права защищены.</p>
+        <a href="http://www.lauraschool.ru/img/documents/privat-policy.pdf" target="_blank" rel="noopener">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </footer>
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Запись на курс">
+    <div class="modal">
+      <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <h2 class="modal__title">Записаться на курс</h2>
+      <p class="modal__sub">Оставьте заявку — мы перезвоним в ближайшее время</p>
+      <form class="modal__form" onsubmit="submitForm(event)" novalidate>
+        <div class="field">
+          <label class="field__lbl" for="m-name">Ваше имя</label>
+          <input class="field__inp" type="text" id="m-name" name="name" placeholder="Иван Иванов" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label class="field__lbl" for="m-phone">Номер телефона</label>
+          <input class="field__inp" type="tel" id="m-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+        </div>
+        <div class="field">
+          <label class="field__lbl" for="m-cat">Категория</label>
+          <select class="field__inp" id="m-cat" name="category">
+            <option value="B">Категория B (автомобиль)</option>
+            <option value="A">Категория A (мотоцикл)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
+        <p class="modal__privacy">Нажимая кнопку, вы соглашаетесь на <a href="http://www.lauraschool.ru/img/documents/privat-policy.pdf" target="_blank">обработку персональных данных</a></p>
+      </form>
+    </div>
+  </div>
+  <script src="javascript/main.js"></script>
+</body>
+</html>

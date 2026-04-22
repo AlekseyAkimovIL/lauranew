@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Автошкола «Лаура» — Автошкола «Лаура»</title>
+  <meta name="description" content="Профессиональная подготовка водителей категории A и B в Петергофе, Ломоносове и Сосновом Боре">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="header__inner container">
+      <a href="index.html" class="logo">
+        <span class="logo__mark">Л</span>
+        <span class="logo__text">ЛАУРА</span>
+      </a>
+      <nav class="header__nav" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="index.html" class="nav__link  nav__link--active">Главная</a></li>
+          <li class="nav__item"><a href="start.html" class="nav__link">Начать обучение</a></li>
+          <li class="nav__item"><a href="schedule.html" class="nav__link">Расписание</a></li>
+          <li class="nav__item"><a href="reviews.html" class="nav__link">Отзывы</a></li>
+          <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <a href="tel:88123381008" class="header__phone">8 (812) 338-10-08</a>
+        <button class="btn btn--primary" onclick="openModal()">Записаться</button>
+      </div>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+        <span class="burger__line"></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul class="mobile-menu__list">
+        <li><a href="index.html" class="mobile-menu__link">Главная</a></li>
+        <li><a href="start.html" class="mobile-menu__link">Начать обучение</a></li>
+        <li><a href="schedule.html" class="mobile-menu__link">Расписание</a></li>
+        <li><a href="reviews.html" class="mobile-menu__link">Отзывы</a></li>
+        <li><a href="contacts.html" class="mobile-menu__link">Контакты</a></li>
+      </ul>
+      <a href="tel:88123381008" class="mobile-menu__phone">8 (812) 338-10-08</a>
+      <button class="btn btn--primary" style="width:100%" onclick="openModal()">Записаться</button>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero__bg-grid" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="badge"><span class="badge__dot"></span>Набор открыт</div>
+          <h1 class="hero__title">Хватит ходить<br><em>пешком</em></h1>
+          <p class="hero__sub">Профессиональная подготовка водителей категорий A и B в Петергофе, Ломоносове и Сосновом Боре</p>
+          <div class="prices">
+            <div class="prices__item">
+              <span class="prices__cat">Категория B</span>
+              <span class="prices__val">47 000 ₽</span>
+              <span class="prices__note">МКПП и АКПП</span>
+            </div>
+            <div class="prices__div" aria-hidden="true"></div>
+            <div class="prices__item">
+              <span class="prices__cat">Категория A</span>
+              <span class="prices__val">33 000 ₽</span>
+              <span class="prices__note">мотоцикл</span>
+            </div>
+          </div>
+          <div class="hero__trial">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v3.5L10 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Пробное занятие — бесплатно
+          </div>
+          <div class="hero__actions">
+            <button class="btn btn--primary btn--large" onclick="openModal()">Записаться на обучение</button>
+            <a href="start.html" class="btn btn--outline btn--large">Начать обучение</a>
+          </div>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="card-car">
+            <div class="card-car__label">Ваш учебный автомобиль</div>
+            <div class="card-car__model">Škoda Octavia</div>
+            <div class="card-car__tags">
+              <span class="tag">МКПП</span><span class="tag">АКПП</span><span class="tag">Двойное управление</span>
+            </div>
+            <div class="card-car__icon">
+              <svg viewBox="0 0 120 58" fill="none">
+                <rect x="10" y="26" width="100" height="22" rx="6" fill="currentColor" opacity=".12"/>
+                <path d="M18 26L34 12L86 12L102 26" stroke="currentColor" stroke-width="2" fill="none"/>
+                <rect x="10" y="26" width="100" height="20" rx="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="30" cy="48" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="30" cy="48" r="3" fill="currentColor" opacity=".4"/>
+                <circle cx="90" cy="48" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="90" cy="48" r="3" fill="currentColor" opacity=".4"/>
+                <line x1="37" y1="12" x2="37" y2="26" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="60" y1="12" x2="60" y2="26" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="83" y1="12" x2="83" y2="26" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="stat-cards">
+            <div class="stat-card"><span class="stat-card__num">12</span><span class="stat-card__label">инструкторов</span></div>
+            <div class="stat-card"><span class="stat-card__num">3</span><span class="stat-card__label">филиала</span></div>
+            <div class="stat-card"><span class="stat-card__num">2007</span><span class="stat-card__label">год основания</span></div>
+          </div>
+        </div>
+      </div>
+      <a href="#advantages" class="hero__scroll" aria-label="Прокрутить вниз">
+        <span>Листать вниз</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </section>
+
+    <section class="advantages section" id="advantages">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Почему Лаура</span>
+          <h2 class="section__title">Всё для вашего успешного обучения</h2>
+        </div>
+        <ul class="adv-grid" role="list">
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><rect x="4" y="26" width="32" height="10" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 26V20a2 2 0 012-2h20a2 2 0 012 2v6" stroke="currentColor" stroke-width="1.8"/><circle cx="20" cy="10" r="5" stroke="currentColor" stroke-width="1.8"/></svg></div><h3 class="adv-card__title">Собственный автодром</h3><p class="adv-card__text">Оборудован для отработки всех элементов вождения — от парковки до сложных манёвров.</p></li>
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><path d="M20 4l4 8 9 1.3-6.5 6.3 1.5 9L20 24l-8 4.6 1.5-9L7 13.3l9-1.3L20 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h3 class="adv-card__title">Экзамен в ГИБДД</h3><p class="adv-card__text">Сдаёте на своём учебном автомобиле по знакомому маршруту в Ломоносове.</p></li>
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><rect x="6" y="8" width="28" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M13 32h14M20 28v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><h3 class="adv-card__title">Дистанционное обучение</h3><p class="adv-card__text">Теорию можно изучать онлайн в любое удобное время без посещения класса.</p></li>
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="14" cy="16" r="5" stroke="currentColor" stroke-width="1.8"/><circle cx="26" cy="16" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M4 34c0-5.5 4.5-10 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 24c5.5 0 10 4.5 10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><h3 class="adv-card__title">Маленькие группы</h3><p class="adv-card__text">Небольшие группы гарантируют индивидуальный подход к каждому ученику.</p></li>
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M20 6v4M20 30v4M6 20h4M30 20h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><h3 class="adv-card__title">Всё продумано</h3><p class="adv-card__text">Организуем учебный процесс так, чтобы вы сосредоточились на обучении.</p></li>
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><path d="M8 14h24M8 20h16M8 26h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="4" y="6" width="32" height="28" rx="4" stroke="currentColor" stroke-width="1.8"/></svg></div><h3 class="adv-card__title">Учебный класс</h3><p class="adv-card__text">Оборудован всем необходимым — проектор, стенды, актуальные ПДД.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="why section">
+      <div class="container why__grid">
+        <div>
+          <span class="section__label">Наш подход</span>
+          <h2 class="section__title">Учим, а не просто «откатываем часы»</h2>
+          <div class="why__pts">
+            <div class="why__pt"><div class="why__num">01</div><p>Опытные педагоги находят индивидуальный подход к каждому ученику</p></div>
+            <div class="why__pt"><div class="why__num">02</div><p>Обучаем грамотному соблюдению ПДД и безопасному поведению на дороге</p></div>
+            <div class="why__pt"><div class="why__num">03</div><p>Учим ориентироваться в сложной обстановке и предотвращать аварии</p></div>
+            <div class="why__pt"><div class="why__num">04</div><p>Гарантируем подготовку уверенного водителя из каждого нашего ученика</p></div>
+          </div>
+          <a href="start.html" class="btn btn--primary">Начать обучение</a>
+        </div>
+        <div class="gal-grid">
+          <div class="gal-item gal-item--tall"><img src="http://www.lauraschool.ru/img/gallery/les1.jpg" alt="Урок вождения" loading="lazy"></div>
+          <div class="gal-item"><img src="http://www.lauraschool.ru/img/gallery/together.jpeg" alt="Команда" loading="lazy"></div>
+          <div class="gal-item"><img src="http://www.lauraschool.ru/img/gallery/students.jpg" alt="Ученики" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+    <section class="team section" id="team">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Наша команда</span>
+          <h2 class="section__title">Люди, которые вас учат</h2>
+        </div>
+
+        <div class="team-group">
+          <h3 class="team-group__title"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Руководство</h3>
+          <ul class="instr-grid instr-grid--leaders" role="list">
+          <li class="instr-card instr-card--leader">
+            <div class="instr-card__photo"><img src="img/team/Romanovsky.jpg" alt="Романовский Роман Александрович — директор автошколы Лаура" loading="lazy"></div>
+            <div class="instr-card__body">
+              <div class="instr-card__role">Генеральный директор</div>
+              <h3 class="instr-card__name">Романовский<br>Роман Александрович</h3>
+            </div>
+          </li>
+          <li class="instr-card instr-card--leader">
+            <div class="instr-card__photo"><img src="img/team/Bolshakov.jpg" alt="Большаков Павел Яковлевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <div class="instr-card__role">Заместитель директора</div>
+              <h3 class="instr-card__name">Большаков<br>Павел Яковлевич</h3>
+            </div>
+          </li>
+          </ul>
+        </div>
+
+        <div class="team-group">
+          <h3 class="team-group__title"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Преподаватели теории</h3>
+          <ul class="instr-grid instr-grid--teach" role="list">
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Orlov.jpg" alt="Орлов Николай Иванович" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Орлов<br>Николай Иванович</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2001 г.</li>
+                <li><span>Стаж вождения с</span> 1979 г.</li>
+                <li><span>Образование</span> ЛенВОКУ им. С.М. Кирова, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span><span class="cat">D</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Chichenko.jpg" alt="Чиченко Олег Владимирович" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Чиченко<br>Олег Владимирович</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2014 г.</li>
+                <li><span>Стаж вождения с</span> 1980 г.</li>
+                <li><span>Образование</span> ЛенВОКУ им. С.М. Кирова, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span></div></li>
+              </ul>
+            </div>
+          </li>
+          </ul>
+        </div>
+
+        <div class="team-group">
+          <h3 class="team-group__title"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg> Инструкторы по вождению</h3>
+          <ul class="instr-grid" role="list">
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Konstantinov.jpg" alt="Константинов Владимир Андреевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Константинов<br>Владимир Андреевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2020 г.</li>
+                <li><span>Стаж вождения с</span> 2012 г.</li>
+                <li><span>Образование</span> СПбГЛТА, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">B</span><span class="cat">C</span><span class="cat">D</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Beketov.jpg" alt="Бекетов Герман Сергеевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Бекетов<br>Герман Сергеевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2020 г.</li>
+                <li><span>Стаж вождения с</span> 2010 г.</li>
+                <li><span>Образование</span> СПбГАУ, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Serov.jpg" alt="Серов Илья Владимирович" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Серов<br>Илья Владимирович</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2020 г.</li>
+                <li><span>Стаж вождения с</span> 2010 г.</li>
+                <li><span>Образование</span> МГУТУ, технолог</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Grigoriev.jpg" alt="Григорьев Дмитрий Сергеевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Григорьев<br>Дмитрий Сергеевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2017 г.</li>
+                <li><span>Стаж вождения с</span> 2005 г.</li>
+                <li><span>Образование</span> Смольный РАО, экономист</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span><span class="cat">D</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Plotnikov.jpg" alt="Плотников Борис Владимирович" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Плотников<br>Борис Владимирович</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2010 г.</li>
+                <li><span>Стаж вождения с</span> 2005 г.</li>
+                <li><span>Образование</span> СГАУ им. Вавилова, инженер-механик</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">B</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Burtsev.jpg" alt="Бурцев Андрей Юрьевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Бурцев<br>Андрей Юрьевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2022 г.</li>
+                <li><span>Стаж вождения с</span> 1988 г.</li>
+                <li><span>Образование</span> СПбГАСУ, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">B</span><span class="cat">C</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Polatov.jpg" alt="Полатов Азатбай Жумаевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Полатов<br>Азатбай Жумаевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 1990 г.</li>
+                <li><span>Стаж вождения с</span> 1979 г.</li>
+                <li><span>Образование</span> ЛПИ им. М.И. Калинина, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span><span class="cat">D</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Vorobiev.jpg" alt="Воробьев Александр Сергеевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Воробьев<br>Александр Сергеевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2016 г.</li>
+                <li><span>Стаж вождения с</span> 2002 г.</li>
+                <li><span>Образование</span> Высшее, СПбГАСУ (инженер)</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span><span class="cat">D</span><span class="cat">E</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo "><img src="img/team/Alena.jpg"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Федорова<br>Алёна Кирилловна</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2025 г.</li>
+                <li><span>Стаж вождения с</span> 2011 г.</li>
+                <li><span>Образование</span> МУ им. С.Ю. Витте, гос. и муниц. управление</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">B</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+               <div class="instr-card__photo "><img src="img/team/Katya.jpg"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Смирнова<br>Екатерина Витальевна</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2023 г.</li>
+                <li><span>Стаж вождения с</span> 2021 г.</li>
+                <li><span>Образование</span> СПбГУПТД, экономист</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">B</span><span class="cat">C</span></div></li>
+              </ul>
+            </div>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="photo-gallery section">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Фотогалерея</span>
+          <h2 class="section__title">Наши фотографии</h2>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-item"><img src="http://www.lauraschool.ru/img/gallery/students-2.jpg" alt="Ученики" loading="lazy"></div>
+          <div class="photo-item photo-item--wide"><img src="http://www.lauraschool.ru/img/gallery/process.jpg" alt="Процесс обучения" loading="lazy"></div>
+          <div class="photo-item"><img src="http://www.lauraschool.ru/img/gallery/students-3.jpg" alt="Студенты" loading="lazy"></div>
+          <div class="photo-item photo-item--wide"><img src="http://www.lauraschool.ru/img/gallery/les2.jpg" alt="Урок" loading="lazy"></div>
+          <div class="photo-item"><img src="http://www.lauraschool.ru/img/gallery/students-4.jpg" alt="Обучение" loading="lazy"></div>
+          <div class="photo-item"><img src="http://www.lauraschool.ru/img/gallery/les3.jpg" alt="Занятие" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+    <section class="cta">
+      <div class="container cta__inner">
+        <div class="cta__body">
+          <h2 class="cta__title">Начни учиться<br>уже сегодня</h2>
+          <p class="cta__text">Новая группа стартует в начале и конце каждого месяца. Пробное занятие — бесплатно.</p>
+          <div class="cta__btns">
+            <button class="btn btn--white btn--large" onclick="openModal()">Записаться на курс</button>
+            <a href="tel:88123381008" class="btn btn--outline-white btn--large">8 (812) 338-10-08</a>
+          </div>
+        </div>
+        <div class="cta__rings" aria-hidden="true">
+          <div class="cta__ring cta__ring--1"></div>
+          <div class="cta__ring cta__ring--2"></div>
+          <div class="cta__ring cta__ring--3"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="logo">
+            <span class="logo__mark">Л</span>
+            <span class="logo__text" style="color:#fff">ЛАУРА</span>
+          </a>
+          <p class="footer__tag">Учим, а не просто<br>«откатываем часы»</p>
+        </div>
+        <div>
+          <p class="footer__ttl">Навигация</p>
+          <ul class="footer__list">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="start.html">Начать обучение</a></li>
+            <li><a href="schedule.html">Расписание</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="documents.html">Документы</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__ttl">Контакты</p>
+          <ul class="footer__list">
+            <li><a href="tel:88123381008">8 (812) 338-10-08</a></li>
+            <li><a href="tel:89118481008">8 (911) 848-10-08</a></li>
+            <li><a href="mailto:mail@lauraschool.ru">mail@lauraschool.ru</a></li>
+          </ul>
+          <p class="footer__hrs">Пн–Сб: 10:00–20:00<br>Воскресенье: выходной</p>
+        </div>
+        <div class="footer__addr-col">
+          <p class="footer__ttl">Адреса</p>
+          <ul class="footer__list">
+            <li>г. Петергоф, пр. Санкт-Петербургский, 60, офис 225</li>
+            <li>г. Ломоносов, ул. Победы, 24, офис 322</li>
+            <li>г. Сосновый Бор, ул. Петра Великого, 10а, каб. 57</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bot">
+      <div class="container">
+        <p>© 2024 Автошкола «Лаура». Все права защищены.</p>
+        <a href="http://www.lauraschool.ru/img/documents/privat-policy.pdf" target="_blank" rel="noopener">Политика конфиденциальности</a>
+      </div>
+    </div>
+  </footer>
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Запись на курс">
+    <div class="modal">
+      <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <h2 class="modal__title">Записаться на курс</h2>
+      <p class="modal__sub">Оставьте заявку — мы перезвоним в ближайшее время</p>
+      <form class="modal__form" onsubmit="submitForm(event)" novalidate>
+        <div class="field">
+          <label class="field__lbl" for="m-name">Ваше имя</label>
+          <input class="field__inp" type="text" id="m-name" name="name" placeholder="Иван Иванов" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label class="field__lbl" for="m-phone">Номер телефона</label>
+          <input class="field__inp" type="tel" id="m-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+        </div>
+        <div class="field">
+          <label class="field__lbl" for="m-cat">Категория</label>
+          <select class="field__inp" id="m-cat" name="category">
+            <option value="B">Категория B (автомобиль)</option>
+            <option value="A">Категория A (мотоцикл)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
+        <p class="modal__privacy">Нажимая кнопку, вы соглашаетесь на <a href="http://www.lauraschool.ru/img/documents/privat-policy.pdf" target="_blank">обработку персональных данных</a></p>
+      </form>
+    </div>
+  </div>
+  <script src="javascript/main.js"></script>
+</body>
+</html>
