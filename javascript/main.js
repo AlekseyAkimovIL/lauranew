@@ -312,58 +312,75 @@ loadEmailJS(async function () {
     form.addEventListener('mousedown', function () { contactT0 = Date.now(); }, { once: true });
   }
 
-  window.submitContact = function (e) {
-    
-    e.preventDefault();
-    var form = e.target;
-    var succ = document.getElementById('contactSuccess');
-    if (succ) succ.hidden = true;
-    var nameInp   = form.querySelector('#cf-name');
-    var phoneInp  = form.querySelector('#cf-phone');
-    var emailInp  = form.querySelector('#cf-email');
-    var msgArea   = form.querySelector('#cf-msg');
-    var branchSel = form.querySelector('#cf-branch');
-    var btn       = form.querySelector('button[type="submit"]');
-    var succ      = document.getElementById('contactSuccess');
-    var orig      = btn ? btn.textContent : '';
+ window.submitContact = function (e) {
+  e.preventDefault();
 
-    var old = form.querySelector('.form-msg'); if (old) old.remove();
+  var form = e.target;
+  var succ = document.getElementById('contactSuccess');
+  var btn = form.querySelector('button[type="submit"]');
+  var orig = btn ? btn.textContent : '';
 
-    if (isBot(form, contactT0)) {
+  var nameInp   = form.querySelector('#cf-name');
+  var phoneInp  = form.querySelector('#cf-phone');
+  var emailInp  = form.querySelector('#cf-email');
+  var msgArea   = form.querySelector('#cf-msg');
+  var branchSel = form.querySelector('#cf-branch');
+
+  if (succ) succ.hidden = true;
+
+  if (!(vName(nameInp) && vPhone(phoneInp) && vEmail(emailInp))) {
+    return;
+  }
+
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Отправляем…';
+  }
+
+  showMsg(form, 'spin', 'Отправляем…');
+
+  loadEmailJS(function () {
+
+    sendEmail({
+      from_name: nameInp.value.trim(),
+      phone: getFullPhone(phoneInp),
+      email: emailInp.value.trim(),
+      message: msgArea.value.trim(),
+      branch: branchSel && branchSel.value
+        ? branchSel.options[branchSel.selectedIndex].text
+        : 'Не выбран',
+      category: ''
+    })
+    .then(function (res) {
+
+      console.log('SUCCESS', res);
+
       form.reset();
+
+      var m = form.querySelector('.form-msg');
+      if (m) m.remove();
+
       if (btn) btn.style.display = 'none';
       if (succ) succ.hidden = false;
-      return;
-    }
 
-    var ok = vName(nameInp) && vPhone(phoneInp) && vEmail(emailInp);
-    if (!ok) { showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.'); return; }
+    })
+    .catch(function (err) {
 
-    if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
-    showMsg(form, 'spin', 'Отправляем…');
+      console.error('EMAIL ERROR:', err);
 
-    loadEmailJS(function () {
-      sendEmail({
-        from_name: nameInp  ? nameInp.value.trim()  : '',
-        phone:     phoneInp ? (getFullPhone(phoneInp) || phoneInp.value) : '',
-        email:     emailInp ? emailInp.value.trim() : '',
-        message:   msgArea  ? msgArea.value.trim()  : '',
-        branch:    branchSel && branchSel.value
-                   ? branchSel.options[branchSel.selectedIndex].text : 'Не выбран',
-        category:  '',
-      }).then(function () {
-        var m = form.querySelector('.form-msg'); if (m) m.remove();
-        form.reset();
-        if (btn) btn.style.display = 'none';
-        if (succ) succ.hidden = false;
-      }).catch(function (err) {
-        console.error('[Laura] EmailJS error:', err);
-        var m = form.querySelector('.form-msg'); if (m) m.remove();
-        showMsg(form, 'err', 'Не удалось отправить. Напишите: mail@lauraschool.ru');
-        if (btn) { btn.disabled = false; btn.textContent = orig; }
-      });
+      var m = form.querySelector('.form-msg');
+      if (m) m.remove();
+
+      showMsg(form, 'err', 'Ошибка отправки');
+
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = orig;
+      }
     });
-  };
+
+  });
+};
 
   /* ── BRANCH TABS ─────────────────────────────────────────────── */
   document.querySelectorAll('.branch-tab').forEach(function (tab) {
