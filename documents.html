@@ -174,6 +174,7 @@
       </div>
     </div>
   </footer>
+  <!-- MODAL -->
   <div class="modal-overlay" id="modalOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Запись на курс">
     <div class="modal">
       <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">
@@ -185,10 +186,19 @@
         <div class="field">
           <label class="field__lbl" for="m-name">Ваше имя</label>
           <input class="field__inp" type="text" id="m-name" name="name" placeholder="Иван Иванов" required autocomplete="name">
+          <!-- FIX: добавлен элемент для вывода ошибки имени -->
+          <span class="field__err" id="m-name-err"></span>
         </div>
         <div class="field">
           <label class="field__lbl" for="m-phone">Номер телефона</label>
-          <input class="field__inp" type="tel" id="m-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+          <!-- FIX: добавлен phone-wrap с префиксом +7, маска работает
+               так же как в контактной форме, getFullPhone() корректен -->
+          <div class="phone-wrap">
+            <span class="phone-prefix">+7</span>
+            <input class="field__inp phone-inp" type="tel" id="m-phone" name="phone"
+              placeholder="(___) ___-__-__" maxlength="15" autocomplete="tel" required>
+          </div>
+          <span class="field__err" id="m-phone-err"></span>
         </div>
         <div class="field">
           <label class="field__lbl" for="m-cat">Категория</label>

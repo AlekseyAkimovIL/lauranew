@@ -1,15 +1,6 @@
 /* ================================================================
    АВТОШКОЛА «ЛАУРА» — main.js
    EmailJS · Валидация · Маска телефона · Антиспам · Анимации
-
-   НАСТРОЙКА EmailJS (бесплатно, 200 писем/мес):
-   1. https://www.emailjs.com → зарегистрируйтесь
-   2. Add Service → Gmail/Yandex → скопируйте SERVICE_ID
-   3. Email Templates → создайте шаблон → скопируйте TEMPLATE_ID
-      Переменные в шаблоне: {{from_name}} {{phone}} {{category}}
-      {{branch}} {{email}} {{message}}
-   4. Account → Public Key → скопируйте PUBLIC_KEY
-   5. Вставьте ниже и замените YOUR_* на реальные значения
    ================================================================ */
 (function () {
   'use strict';
@@ -17,7 +8,6 @@
   var EJS_PUBLIC_KEY  = 'WDCcnnUzYqPzTaLbD';
   var EJS_SERVICE_ID  = 'service_h1pm0cn';
   var EJS_TEMPLATE_ID = 'template_6owfu4x';
-  var TO_EMAIL        = 'mail@lauraschool.ru';
   var EJS_READY       = false;
 
   function loadEmailJS(cb) {
@@ -49,7 +39,9 @@
     if (btn) form.insertBefore(d, btn); else form.appendChild(d);
   }
 
-  /* ── PHONE MASK: +7 зафиксирован, вводится только 10 цифр ──── */
+  /* ── PHONE MASK ─────────────────────────────────────────────── */
+  /* FIX: единая функция маски для любого поля телефона —
+     как в модалке (без phone-wrap), так и в контактной форме    */
   function applyPhoneMask(input) {
     function fmt(raw) {
       var d = raw.replace(/\D/g, '');
@@ -149,7 +141,8 @@
     if (!EJS_READY) {
       return Promise.reject('EmailJS not loaded');
     }
-    params.to_email = TO_EMAIL;
+    /* FIX: убран to_email из params — адрес получателя задаётся
+       в настройках шаблона/сервиса EmailJS, а не в параметрах  */
     return emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, params);
   }
 
@@ -185,15 +178,12 @@
   }
 
   /* ── MODAL ───────────────────────────────────────────────────── */
-  /* FIX: сбрасываем таймер антиспама при открытии модалки,
-     а не при первом focusin — иначе быстрый пользователь
-     блокируется как бот                                           */
   var modalT0 = Date.now();
 
   window.openModal = function () {
     var o = document.getElementById('modalOverlay');
     if (!o) return;
-    modalT0 = Date.now(); /* FIX: сброс таймера здесь */
+    modalT0 = Date.now();
     o.classList.add('modal-overlay--open');
     o.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
@@ -221,11 +211,14 @@
     injectHoneypot(form);
     var nameInp  = form.querySelector('#m-name');
     var phoneInp = form.querySelector('#m-phone');
+
+    /* FIX: применяем маску к телефону модалки.
+       Поле в HTML не обёрнуто в phone-wrap — маска всё равно
+       работает, т.к. applyPhoneMask не требует phone-wrap.     */
     if (phoneInp) applyPhoneMask(phoneInp);
+
     if (nameInp)  nameInp.addEventListener('blur',  function () { vName(nameInp); });
     if (phoneInp) phoneInp.addEventListener('blur',  function () { vPhone(phoneInp); });
-    /* FIX: убран focusin-обработчик сброса modalT0 —
-       сброс теперь происходит в openModal()            */
   }
 
   window.submitForm = function (e) {
@@ -241,7 +234,6 @@
     var old = form.querySelector('.form-msg'); if (old) old.remove();
 
     if (isBot(form, modalT0)) {
-      /* Silent fake success for bots */
       showMsg(form, 'ok', 'Заявка принята! Мы перезвоним вам в ближайшее время.');
       form.reset();
       setTimeout(window.closeModal, 2500);
@@ -267,7 +259,8 @@
         form.reset();
         if (btn) { btn.disabled = false; btn.textContent = orig; }
         setTimeout(window.closeModal, 2500);
-      }).catch(function () {
+      }).catch(function (err) {
+        console.error('[Laura] EmailJS error:', err);
         var m = form.querySelector('.form-msg'); if (m) m.remove();
         showMsg(form, 'err', 'Ошибка. Позвоните: 8\u00a0(812)\u00a0338-10-08');
         if (btn) { btn.disabled = false; btn.textContent = orig; }
@@ -276,7 +269,12 @@
   };
 
   /* ── CONTACT FORM ────────────────────────────────────────────── */
+  /* FIX: contactT0 сбрасывается при focusin на любое поле формы.
+     Ранее сброс не работал надёжно если пользователь сразу
+     кликал на submit не касаясь полей — теперь сброс при mousedown
+     на форму, что срабатывает раньше submit.                     */
   var contactT0 = Date.now();
+
   function initContactForm() {
     var form = document.querySelector('.contact-form');
     if (!form) return;
@@ -285,12 +283,13 @@
     var phoneInp = form.querySelector('#cf-phone');
     var emailInp = form.querySelector('#cf-email');
     if (phoneInp) applyPhoneMask(phoneInp);
-    if (nameInp)  nameInp.addEventListener('blur',  function () { vName(nameInp); });
-    if (phoneInp) phoneInp.addEventListener('blur',  function () { vPhone(phoneInp); });
-    if (emailInp) emailInp.addEventListener('blur',  function () { vEmail(emailInp); });
-    /* FIX: сбрасываем таймер при первом focusin на контактной форме —
-       здесь это корректно, т.к. форма всегда открыта на странице    */
-    form.addEventListener('focusin', function () { contactT0 = Date.now(); }, { once: true });
+    if (nameInp)  nameInp.addEventListener('blur', function () { vName(nameInp); });
+    if (phoneInp) phoneInp.addEventListener('blur', function () { vPhone(phoneInp); });
+    if (emailInp) emailInp.addEventListener('blur', function () { vEmail(emailInp); });
+
+    /* FIX: сбрасываем таймер при любом взаимодействии с формой  */
+    form.addEventListener('focusin',   function () { contactT0 = Date.now(); }, { once: true });
+    form.addEventListener('mousedown', function () { contactT0 = Date.now(); }, { once: true });
   }
 
   window.submitContact = function (e) {
@@ -334,7 +333,8 @@
         form.reset();
         if (btn) btn.style.display = 'none';
         if (succ) succ.hidden = false;
-      }).catch(function () {
+      }).catch(function (err) {
+        console.error('[Laura] EmailJS error:', err);
         var m = form.querySelector('.form-msg'); if (m) m.remove();
         showMsg(form, 'err', 'Не удалось отправить. Напишите: mail@lauraschool.ru');
         if (btn) { btn.disabled = false; btn.textContent = orig; }
@@ -375,9 +375,6 @@
   }
 
   /* ── BOOT ────────────────────────────────────────────────────── */
-  /* FIX: скрипт подключён в конце <body>, поэтому DOMContentLoaded
-     может уже сработать до выполнения этого кода — проверяем
-     readyState и инициализируем сразу если DOM уже готов          */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       initModalForm();
