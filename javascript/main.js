@@ -88,6 +88,7 @@
 
   /* ── FIELD ERRORS ────────────────────────────────────────────── */
   function showFieldErr(input, msg) {
+    if (!input) return;
     input.classList.add('field__inp--err');
     var wrap = input.closest('.phone-wrap');
     if (wrap) wrap.classList.add('phone-wrap--err');
@@ -95,6 +96,7 @@
     if (errEl) errEl.textContent = msg;
   }
   function clearFieldErr(input) {
+    if (!input) return;
     input.classList.remove('field__inp--err');
     var wrap = input.closest('.phone-wrap');
     if (wrap) wrap.classList.remove('phone-wrap--err');
@@ -104,7 +106,7 @@
 
   /* ── VALIDATORS ──────────────────────────────────────────────── */
   function vName(inp) {
-    if (!inp) return true;
+    if (!inp) { console.warn('[Laura] vName: input not found'); return false; }
     var v = inp.value.trim();
     if (!v)          { showFieldErr(inp, 'Введите ваше имя'); return false; }
     if (v.length < 2){ showFieldErr(inp, 'Имя слишком короткое'); return false; }
@@ -112,7 +114,7 @@
     clearFieldErr(inp); return true;
   }
   function vPhone(inp) {
-    if (!inp) return true;
+    if (!inp) { console.warn('[Laura] vPhone: input not found'); return false; }
     if (!getFullPhone(inp)) {
       showFieldErr(inp, 'Введите 10 цифр: (9XX) XXX-XX-XX'); return false;
     }
@@ -145,8 +147,8 @@
   /* ── SEND EMAIL ──────────────────────────────────────────────── */
   function sendEmail(params) {
     if (!EJS_READY) {
-     return Promise.reject('EmailJS not loaded');
-  }
+      return Promise.reject('EmailJS not loaded');
+    }
     params.to_email = TO_EMAIL;
     return emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, params);
   }
@@ -183,9 +185,15 @@
   }
 
   /* ── MODAL ───────────────────────────────────────────────────── */
+  /* FIX: сбрасываем таймер антиспама при открытии модалки,
+     а не при первом focusin — иначе быстрый пользователь
+     блокируется как бот                                           */
+  var modalT0 = Date.now();
+
   window.openModal = function () {
     var o = document.getElementById('modalOverlay');
     if (!o) return;
+    modalT0 = Date.now(); /* FIX: сброс таймера здесь */
     o.classList.add('modal-overlay--open');
     o.setAttribute('aria-hidden','false');
     document.body.style.overflow = 'hidden';
@@ -207,9 +215,8 @@
   });
 
   /* ── MODAL FORM ──────────────────────────────────────────────── */
-  var modalT0 = Date.now();
   function initModalForm() {
-    var form     = document.querySelector('#modalOverlay .modal__form');
+    var form = document.querySelector('#modalOverlay .modal__form');
     if (!form) return;
     injectHoneypot(form);
     var nameInp  = form.querySelector('#m-name');
@@ -217,7 +224,8 @@
     if (phoneInp) applyPhoneMask(phoneInp);
     if (nameInp)  nameInp.addEventListener('blur',  function () { vName(nameInp); });
     if (phoneInp) phoneInp.addEventListener('blur',  function () { vPhone(phoneInp); });
-    form.addEventListener('focusin', function () { modalT0 = Date.now(); }, { once: true });
+    /* FIX: убран focusin-обработчик сброса modalT0 —
+       сброс теперь происходит в openModal()            */
   }
 
   window.submitForm = function (e) {
@@ -240,7 +248,7 @@
       return;
     }
 
- var ok = vName(nameInp) && vPhone(phoneInp);
+    var ok = vName(nameInp) && vPhone(phoneInp);
     if (!ok) { showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.'); return; }
 
     if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
@@ -270,7 +278,7 @@
   /* ── CONTACT FORM ────────────────────────────────────────────── */
   var contactT0 = Date.now();
   function initContactForm() {
-    var form     = document.querySelector('.contact-form');
+    var form = document.querySelector('.contact-form');
     if (!form) return;
     injectHoneypot(form);
     var nameInp  = form.querySelector('#cf-name');
@@ -280,6 +288,8 @@
     if (nameInp)  nameInp.addEventListener('blur',  function () { vName(nameInp); });
     if (phoneInp) phoneInp.addEventListener('blur',  function () { vPhone(phoneInp); });
     if (emailInp) emailInp.addEventListener('blur',  function () { vEmail(emailInp); });
+    /* FIX: сбрасываем таймер при первом focusin на контактной форме —
+       здесь это корректно, т.к. форма всегда открыта на странице    */
     form.addEventListener('focusin', function () { contactT0 = Date.now(); }, { once: true });
   }
 
@@ -304,7 +314,7 @@
       return;
     }
 
-    var ok = vName(nameInp) && vPhone(phoneInp);
+    var ok = vName(nameInp) && vPhone(phoneInp) && vEmail(emailInp);
     if (!ok) { showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.'); return; }
 
     if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
@@ -365,9 +375,17 @@
   }
 
   /* ── BOOT ────────────────────────────────────────────────────── */
-  document.addEventListener('DOMContentLoaded', function () {
+  /* FIX: скрипт подключён в конце <body>, поэтому DOMContentLoaded
+     может уже сработать до выполнения этого кода — проверяем
+     readyState и инициализируем сразу если DOM уже готов          */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
+      initModalForm();
+      initContactForm();
+    });
+  } else {
     initModalForm();
     initContactForm();
-  });
+  }
 
 })();

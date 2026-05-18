@@ -427,60 +427,12 @@
       <p class="modal__sub">Оставьте заявку — мы перезвоним в ближайшее время</p>
       <form class="modal__form" onsubmit="submitForm(event)" novalidate>
         <div class="field">
-          <label class="field__lbl" for="m-name">Ваше имя <span class="field__req">*</span></label>
+          <label class="field__lbl" for="m-name">Ваше имя</label>
           <input class="field__inp" type="text" id="m-name" name="name" placeholder="Иван Иванов" required autocomplete="name">
-          <span class="field__err" id="m-name-err"></span>
         </div>
         <div class="field">
-          <label class="field__lbl" for="m-phone">Номер телефона <span class="field__req">*</span></label>
-          <div class="phone-wrap">
-            <span class="phone-prefix">+7</span>
-            <input class="field__inp phone-inp" type="tel" id="m-phone" name="phone"
-              placeholder="(___) ___-__-__" maxlength="15" autocomplete="tel" required>
-          </div>
-          <span class="field__err" id="m-phone-err"></span>
-        </div>
-        <div class="field">
-          <label class="field__lbl" for="m-cat">Категория</label>
-          <select class="field__inp" id="m-cat" name="category">
-            <option value="B">Категория B (автомобиль)</option>
-            <option value="A">Категория A (мотоцикл)</option>
-          </select>
-        </div>
-        <div class="field">
-          <label class="field__lbl" for="m-branch">Выберите филиал</label>
-          <select class="field__inp" id="m-branch" name="branch">
-            <option value="">— Любой удобный —</option>
-            <option value="peterhof">Петергоф — пр. Санкт-Петербургский, 60</option>
-            <option value="lomonosov">Ломоносов — ул. Победы, 24</option>
-            <option value="sosnovy-bor">Сосновый Бор — ул. Петра Великого, 10а</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn--primary btn--full">Отправить заявку</button>
-        <p class="modal__privacy">Нажимая кнопку, вы соглашаетесь на <a href="img/documents/privat-policy.pdf" target="_blank">обработку персональных данных</a></p>
-      </form>
-    </div>
-  </div>
-    <div class="modal">
-      <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      </button>
-      <h2 class="modal__title">Записаться на курс</h2>
-      <p class="modal__sub">Оставьте заявку — мы перезвоним в ближайшее время</p>
-      <form class="modal__form" onsubmit="submitForm(event)" novalidate>
-        <div class="field">
-          <label class="field__lbl" for="m-name">Ваше имя <span class="field__req">*</span></label>
-          <input class="field__inp" type="text" id="m-name" name="name" placeholder="Иван Иванов" required autocomplete="name">
-          <span class="field__err" id="m-name-err"></span>
-        </div>
-        <div class="field">
-          <label class="field__lbl" for="m-phone">Номер телефона <span class="field__req">*</span></label>
-          <div class="phone-wrap">
-            <span class="phone-prefix">+7</span>
-            <input class="field__inp phone-inp" type="tel" id="m-phone" name="phone"
-              placeholder="(___) ___-__-__" maxlength="15" autocomplete="tel" required>
-          </div>
-          <span class="field__err" id="m-phone-err"></span>
+          <label class="field__lbl" for="m-phone">Номер телефона</label>
+          <input class="field__inp" type="tel" id="m-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
         </div>
         <div class="field">
           <label class="field__lbl" for="m-cat">Категория</label>
