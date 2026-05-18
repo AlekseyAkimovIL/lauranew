@@ -19,7 +19,6 @@
   var EJS_TEMPLATE_ID = 'template_6owfu4x';
   var TO_EMAIL        = 'mail@lauraschool.ru';
   var EJS_READY       = false;
-  var DEMO_MODE       = EJS_PUBLIC_KEY === 'WDCcnnUzYqPzTaLbD';
 
   function loadEmailJS(cb) {
     if (window.emailjs) { EJS_READY = true; cb(); return; }
@@ -145,7 +144,7 @@
 
   /* ── SEND EMAIL ──────────────────────────────────────────────── */
   function sendEmail(params) {
-    if (DEMO_MODE || !EJS_READY) {
+    if (!EJS_READY) {
       return new Promise(function (res) { setTimeout(res, 700); });
     }
     params.to_email = TO_EMAIL;
@@ -241,7 +240,7 @@
       return;
     }
 
-    var ok = vName(nameInp) & vPhone(phoneInp);
+ var ok = vName(nameInp) && vPhone(phoneInp);
     if (!ok) { showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.'); return; }
 
     if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
@@ -254,7 +253,7 @@
         category:  catSel   ? catSel.options[catSel.selectedIndex].text : '',
         branch:    branchSel && branchSel.value
                    ? branchSel.options[branchSel.selectedIndex].text : 'Не выбран',
-        email:     '', message: 'Заявка с сайта (форма записи)',
+       email: emailInp ? emailInp.value.trim() : '', message: 'Заявка с сайта (форма записи)',
       }).then(function () {
         var m = form.querySelector('.form-msg'); if (m) m.remove();
         showMsg(form, 'ok', 'Заявка принята! Мы перезвоним в ближайшее время.');
@@ -306,7 +305,7 @@
       return;
     }
 
-    var ok = vName(nameInp) & vPhone(phoneInp) & vEmail(emailInp);
+var ok = vName(nameInp) && vPhone(phoneInp) && vEmail(emailInp);
     if (!ok) { showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.'); return; }
 
     if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
