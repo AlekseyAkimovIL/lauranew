@@ -244,29 +244,49 @@
     if (!ok) { showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.'); return; }
 
     if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
-  showMsg(form, 'spin', 'Отправляем заявку…');
+showMsg(form, 'spin', 'Отправляем заявку…');
 
-    loadEmailJS(function () {
-      sendEmail({
-        from_name: nameInp  ? nameInp.value.trim() : '',
-        phone:     phoneInp ? (getFullPhone(phoneInp) || phoneInp.value) : '',
-        category:  catSel   ? catSel.options[catSel.selectedIndex].text : '',
-        branch:    branchSel && branchSel.value
-                   ? branchSel.options[branchSel.selectedIndex].text : 'Не выбран',
-      }).then(function () {
-        var m = form.querySelector('.form-msg'); if (m) m.remove();
-        showMsg(form, 'ok', 'Заявка принята! Мы перезвоним в ближайшее время.');
-        form.reset();
-        if (btn) { btn.disabled = false; btn.textContent = orig; }
-        setTimeout(window.closeModal, 2500);
-      }).catch(function (err) {
-        console.error('[Laura] EmailJS error:', err);
-        var m = form.querySelector('.form-msg'); if (m) m.remove();
-        showMsg(form, 'err', 'Ошибка. Позвоните: 8\u00a0(812)\u00a0338-10-08');
-        if (btn) { btn.disabled = false; btn.textContent = orig; }
-      });
+loadEmailJS(async function () {
+
+  try {
+
+    const res = await sendEmail({
+      from_name: nameInp.value.trim(),
+      phone: getFullPhone(phoneInp),
+      email: emailInp.value.trim(),
+      message: msgArea.value.trim(),
+      branch: branchSel && branchSel.value
+        ? branchSel.options[branchSel.selectedIndex].text
+        : 'Не выбран',
+      category: ''
     });
-  };
+
+    console.log('SUCCESS', res);
+
+    var m = form.querySelector('.form-msg');
+    if (m) m.remove();
+
+    form.reset();
+
+    if (btn) btn.style.display = 'none';
+    if (succ) succ.hidden = false;
+
+  } catch (err) {
+
+    console.error('EMAIL ERROR:', err);
+
+    var m = form.querySelector('.form-msg');
+    if (m) m.remove();
+
+    showMsg(form, 'err', 'Ошибка отправки формы');
+
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = orig;
+    }
+  }
+});
+};
 
   /* ── CONTACT FORM ────────────────────────────────────────────── */
   /* FIX: contactT0 сбрасывается при focusin на любое поле формы.
