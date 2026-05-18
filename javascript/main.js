@@ -293,6 +293,9 @@
   }
 
   window.submitContact = function (e) {
+    var succ = document.getElementById('contactSuccess');
+
+if (succ) succ.hidden = true;
     e.preventDefault();
     var form      = e.target;
     var nameInp   = form.querySelector('#cf-name');

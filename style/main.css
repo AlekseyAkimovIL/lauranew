@@ -549,7 +549,10 @@ address   { font-style: normal; }
   flex: 1;
   min-width: 0;
 }
-.form-success { display: flex; align-items: center; gap: .625rem; padding: 1rem 1.25rem; background: #f0f9f3; border: 1px solid #9fd8b0; border-radius: var(--r-md); font-size: .875rem; font-weight: 500; color: #3b6d11; margin-top: 1rem; }
+.form-success { display: none; align-items: center; gap: .625rem; padding: 1rem 1.25rem; background: #f0f9f3; border: 1px solid #9fd8b0; border-radius: var(--r-md); font-size: .875rem; font-weight: 500; color: #3b6d11; margin-top: 1rem; }
+.form-success:not([hidden]){
+  display:flex;
+}
 
 /* ── REVIEWS ─────────────────────────────────────────────────── */
 .rev-stats { display: flex; align-items: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
