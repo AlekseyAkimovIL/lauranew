@@ -14,12 +14,12 @@
 (function () {
   'use strict';
 
-  var EJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
-  var EJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
-  var EJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+  var EJS_PUBLIC_KEY  = 'WDCcnnUzYqPzTaLbD';
+  var EJS_SERVICE_ID  = 'service_h1pm0cn';
+  var EJS_TEMPLATE_ID = 'template_6owfu4x';
   var TO_EMAIL        = 'mail@lauraschool.ru';
   var EJS_READY       = false;
-  var DEMO_MODE       = EJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY';
+  var DEMO_MODE       = EJS_PUBLIC_KEY === 'WDCcnnUzYqPzTaLbD';
 
   function loadEmailJS(cb) {
     if (window.emailjs) { EJS_READY = true; cb(); return; }
