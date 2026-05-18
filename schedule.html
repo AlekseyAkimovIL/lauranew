@@ -234,12 +234,18 @@
       <p class="modal__sub">Оставьте заявку — мы перезвоним в ближайшее время</p>
       <form class="modal__form" onsubmit="submitForm(event)" novalidate>
         <div class="field">
-          <label class="field__lbl" for="m-name">Ваше имя</label>
+          <label class="field__lbl" for="m-name">Ваше имя <span class="field__req">*</span></label>
           <input class="field__inp" type="text" id="m-name" name="name" placeholder="Иван Иванов" required autocomplete="name">
+          <span class="field__err" id="m-name-err"></span>
         </div>
         <div class="field">
-          <label class="field__lbl" for="m-phone">Номер телефона</label>
-          <input class="field__inp" type="tel" id="m-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+          <label class="field__lbl" for="m-phone">Номер телефона <span class="field__req">*</span></label>
+          <div class="phone-wrap">
+            <span class="phone-prefix">+7</span>
+            <input class="field__inp phone-inp" type="tel" id="m-phone" name="phone"
+              placeholder="(___) ___-__-__" maxlength="15" autocomplete="tel" required>
+          </div>
+          <span class="field__err" id="m-phone-err"></span>
         </div>
         <div class="field">
           <label class="field__lbl" for="m-cat">Категория</label>

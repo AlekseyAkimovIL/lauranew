@@ -134,7 +134,7 @@
         <div class="section__header"><span class="section__label">Как это работает</span><h2 class="section__title">Путь к правам шаг за шагом</h2></div>
         <ol class="steps-list">
           <li class="step-item"><div class="step-num">01</div><div><h3 class="step-title">Запись по телефону</h3><p class="step-text">Позвоните нам или оставьте заявку онлайн. Согласуем удобное время для визита в офис.</p><a href="tel:88123381008" class="step-link">8 (812) 338-10-08</a></div></li>
-          <li class="step-item"><div class="step-num">02</div><div><h3 class="step-title">Заключение договора</h3><p class="step-text">Приходите с документами, подписываете договор, вносите первый взнос — <strong>17 000 ₽</strong>.</p></div></li>
+          <li class="step-item"><div class="step-num">02</div><div><h3 class="step-title">Заключение договора</h3><p class="step-text">Приходите с документами, подписываете договор, вносите первый взнос — <strong>25 000 ₽</strong>.</p></div></li>
           <li class="step-item"><div class="step-num">03</div><div><h3 class="step-title">Теоретическое обучение</h3><p class="step-text">Изучаете ПДД, правила вождения, первую помощь. В классе или дистанционно — на ваш выбор.</p></div></li>
           <li class="step-item"><div class="step-num">04</div><div><h3 class="step-title">Практическое вождение</h3><p class="step-text">Начинаете с автодрома, затем переходите к городскому вождению. Нужна медицинская справка.</p></div></li>
           <li class="step-item"><div class="step-num">05</div><div><h3 class="step-title">Внутренний экзамен</h3><p class="step-text">Сдаёте внутренний экзамен — теория и площадка. Готовим по всем требованиям ГИБДД.</p></div></li>
@@ -226,12 +226,18 @@
       <p class="modal__sub">Оставьте заявку — мы перезвоним в ближайшее время</p>
       <form class="modal__form" onsubmit="submitForm(event)" novalidate>
         <div class="field">
-          <label class="field__lbl" for="m-name">Ваше имя</label>
+          <label class="field__lbl" for="m-name">Ваше имя <span class="field__req">*</span></label>
           <input class="field__inp" type="text" id="m-name" name="name" placeholder="Иван Иванов" required autocomplete="name">
+          <span class="field__err" id="m-name-err"></span>
         </div>
         <div class="field">
-          <label class="field__lbl" for="m-phone">Номер телефона</label>
-          <input class="field__inp" type="tel" id="m-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+          <label class="field__lbl" for="m-phone">Номер телефона <span class="field__req">*</span></label>
+          <div class="phone-wrap">
+            <span class="phone-prefix">+7</span>
+            <input class="field__inp phone-inp" type="tel" id="m-phone" name="phone"
+              placeholder="(___) ___-__-__" maxlength="15" autocomplete="tel" required>
+          </div>
+          <span class="field__err" id="m-phone-err"></span>
         </div>
         <div class="field">
           <label class="field__lbl" for="m-cat">Категория</label>
