@@ -293,11 +293,11 @@
   }
 
   window.submitContact = function (e) {
-    var succ = document.getElementById('contactSuccess');
-
-if (succ) succ.hidden = true;
+    
     e.preventDefault();
-    var form      = e.target;
+    var form = e.target;
+    var succ = document.getElementById('contactSuccess');
+    if (succ) succ.hidden = true;
     var nameInp   = form.querySelector('#cf-name');
     var phoneInp  = form.querySelector('#cf-phone');
     var emailInp  = form.querySelector('#cf-email');
