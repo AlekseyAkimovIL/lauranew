@@ -55,6 +55,8 @@ address   { font-style: normal; }
   font-weight: 600; line-height: 1.15; letter-spacing: -.03em; color: var(--tx1);
 }
 
+
+
 /* ── BUTTONS ───────────────────────────────────────────────── */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
@@ -375,6 +377,11 @@ address   { font-style: normal; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .spin { animation: spin .8s linear infinite; }
 
+.form-msg--ok   { ... }
+.form-msg--err  { ... }
+.form-msg--wait { ... }
+
+.form-msg--spin { background: var(--surface-alt); border: 1px solid var(--bd); color: var(--tx2)};
 /* ── PAGE HERO (inner pages) ────────────────────────────────── */
 .pg-hero  {
   position: relative; background: var(--bg);

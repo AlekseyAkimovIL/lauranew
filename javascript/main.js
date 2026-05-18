@@ -36,7 +36,17 @@
     d.setAttribute('role', type === 'err' ? 'alert' : 'status');
     d.innerHTML = (ICO[type] || '') + '<span>' + text + '</span>';
     var btn = form.querySelector('button[type="submit"]');
-    if (btn) form.insertBefore(d, btn); else form.appendChild(d);
+    if (btn) {
+      /* Поднимаемся вверх до прямого дочернего элемента form,
+         т.к. кнопка может быть вложена в обёртку (contact-form__footer) */
+      var anchor = btn;
+      while (anchor.parentNode && anchor.parentNode !== form) {
+        anchor = anchor.parentNode;
+      }
+      form.insertBefore(d, anchor);
+    } else {
+      form.appendChild(d);
+    }
   }
 
   /* ── PHONE MASK ─────────────────────────────────────────────── */
