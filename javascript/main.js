@@ -145,8 +145,8 @@
   /* ── SEND EMAIL ──────────────────────────────────────────────── */
   function sendEmail(params) {
     if (!EJS_READY) {
-      return new Promise(function (res) { setTimeout(res, 700); });
-    }
+     return Promise.reject('EmailJS not loaded');
+  }
     params.to_email = TO_EMAIL;
     return emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, params);
   }
@@ -253,7 +253,6 @@
         category:  catSel   ? catSel.options[catSel.selectedIndex].text : '',
         branch:    branchSel && branchSel.value
                    ? branchSel.options[branchSel.selectedIndex].text : 'Не выбран',
-       email: emailInp ? emailInp.value.trim() : '', message: 'Заявка с сайта (форма записи)',
       }).then(function () {
         var m = form.querySelector('.form-msg'); if (m) m.remove();
         showMsg(form, 'ok', 'Заявка принята! Мы перезвоним в ближайшее время.');
@@ -305,7 +304,7 @@
       return;
     }
 
-var ok = vName(nameInp) && vPhone(phoneInp) && vEmail(emailInp);
+    var ok = vName(nameInp) && vPhone(phoneInp);
     if (!ok) { showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.'); return; }
 
     if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
