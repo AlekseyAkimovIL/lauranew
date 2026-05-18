@@ -15,7 +15,7 @@
     var s = document.createElement('script');
     s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
     s.onload  = function () { emailjs.init({ publicKey: EJS_PUBLIC_KEY }); EJS_READY = true; cb(); };
-    s.onerror = function () { cb(); };
+    s.onerror = function () { console.error('[Laura] EmailJS failed to load'); cb(); };
     document.head.appendChild(s);
   }
 
@@ -40,8 +40,6 @@
   }
 
   /* ── PHONE MASK ─────────────────────────────────────────────── */
-  /* FIX: единая функция маски для любого поля телефона —
-     как в модалке (без phone-wrap), так и в контактной форме    */
   function applyPhoneMask(input) {
     function fmt(raw) {
       var d = raw.replace(/\D/g, '');
@@ -139,11 +137,16 @@
   /* ── SEND EMAIL ──────────────────────────────────────────────── */
   function sendEmail(params) {
     if (!EJS_READY) {
-      return Promise.reject('EmailJS not loaded');
+      return Promise.reject(new Error('EmailJS not loaded'));
     }
-    /* FIX: убран to_email из params — адрес получателя задаётся
-       в настройках шаблона/сервиса EmailJS, а не в параметрах  */
-    return emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, params);
+    /* Таймаут 15 секунд — на случай зависшего сетевого запроса */
+    var timeout = new Promise(function (_, reject) {
+      setTimeout(function () { reject(new Error('Timeout: нет ответа от сервера')); }, 15000);
+    });
+    return Promise.race([
+      emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, params),
+      timeout
+    ]);
   }
 
   /* ── HEADER SCROLL ───────────────────────────────────────────── */
@@ -209,18 +212,17 @@
     var form = document.querySelector('#modalOverlay .modal__form');
     if (!form) return;
     injectHoneypot(form);
-    var nameInp  = form.querySelector('#m-name');
     var phoneInp = form.querySelector('#m-phone');
-
-    /* FIX: применяем маску к телефону модалки.
-       Поле в HTML не обёрнуто в phone-wrap — маска всё равно
-       работает, т.к. applyPhoneMask не требует phone-wrap.     */
+    var nameInp  = form.querySelector('#m-name');
     if (phoneInp) applyPhoneMask(phoneInp);
-
-    if (nameInp)  nameInp.addEventListener('blur',  function () { vName(nameInp); });
-    if (phoneInp) phoneInp.addEventListener('blur',  function () { vPhone(phoneInp); });
+    if (nameInp)  nameInp.addEventListener('blur', function () { vName(nameInp); });
+    if (phoneInp) phoneInp.addEventListener('blur', function () { vPhone(phoneInp); });
   }
 
+  /* ── MODAL SUBMIT ────────────────────────────────────────────── */
+  /* FIX: были обращения к несуществующим в этой области видимости
+     переменным emailInp, msgArea, succ — удалены.
+     Модалка содержит только имя, телефон, категорию и филиал.    */
   window.submitForm = function (e) {
     e.preventDefault();
     var form      = e.target;
@@ -229,7 +231,7 @@
     var catSel    = form.querySelector('#m-cat');
     var branchSel = form.querySelector('#m-branch');
     var btn       = form.querySelector('button[type="submit"]');
-    var orig      = btn ? btn.textContent : '';
+    var orig      = btn ? btn.innerHTML : '';
 
     var old = form.querySelector('.form-msg'); if (old) old.remove();
 
@@ -240,59 +242,45 @@
       return;
     }
 
-    var ok = vName(nameInp) && vPhone(phoneInp);
-    if (!ok) { showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.'); return; }
-
-    if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
-showMsg(form, 'spin', 'Отправляем заявку…');
-
-loadEmailJS(async function () {
-
-  try {
-
-    const res = await sendEmail({
-      from_name: nameInp.value.trim(),
-      phone: getFullPhone(phoneInp),
-      email: emailInp.value.trim(),
-      message: msgArea.value.trim(),
-      branch: branchSel && branchSel.value
-        ? branchSel.options[branchSel.selectedIndex].text
-        : 'Не выбран',
-      category: ''
-    });
-
-    console.log('SUCCESS', res);
-
-    var m = form.querySelector('.form-msg');
-    if (m) m.remove();
-
-    form.reset();
-
-    if (btn) btn.style.display = 'none';
-    if (succ) succ.hidden = false;
-
-  } catch (err) {
-
-    console.error('EMAIL ERROR:', err);
-
-    var m = form.querySelector('.form-msg');
-    if (m) m.remove();
-
-    showMsg(form, 'err', 'Ошибка отправки формы');
-
-    if (btn) {
-      btn.disabled = false;
-      btn.textContent = orig;
+    if (!vName(nameInp) || !vPhone(phoneInp)) {
+      showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.');
+      return;
     }
-  }
-});
-};
+
+    if (btn) { btn.disabled = true; btn.innerHTML = ICO.spin + ' Отправляем…'; }
+    showMsg(form, 'spin', 'Отправляем заявку…');
+
+    loadEmailJS(function () {
+      sendEmail({
+        from_name: nameInp.value.trim(),
+        phone:     getFullPhone(phoneInp),
+        email:     '',
+        message:   '',
+        branch:    branchSel && branchSel.value
+                     ? branchSel.options[branchSel.selectedIndex].text
+                     : 'Не выбран',
+        category:  catSel && catSel.value
+                     ? catSel.options[catSel.selectedIndex].text
+                     : ''
+      })
+      .then(function (res) {
+        console.log('[Laura] Modal SUCCESS', res);
+        var m = form.querySelector('.form-msg'); if (m) m.remove();
+        showMsg(form, 'ok', 'Заявка принята! Мы перезвоним вам в ближайшее время.');
+        form.reset();
+        if (btn) { btn.disabled = false; btn.innerHTML = orig; }
+        setTimeout(window.closeModal, 2500);
+      })
+      .catch(function (err) {
+        console.error('[Laura] Modal ERROR:', err);
+        var m = form.querySelector('.form-msg'); if (m) m.remove();
+        showMsg(form, 'err', 'Ошибка отправки. Позвоните нам: 8 (812) 338-10-08');
+        if (btn) { btn.disabled = false; btn.innerHTML = orig; }
+      });
+    });
+  };
 
   /* ── CONTACT FORM ────────────────────────────────────────────── */
-  /* FIX: contactT0 сбрасывается при focusin на любое поле формы.
-     Ранее сброс не работал надёжно если пользователь сразу
-     кликал на submit не касаясь полей — теперь сброс при mousedown
-     на форму, что срабатывает раньше submit.                     */
   var contactT0 = Date.now();
 
   function initContactForm() {
@@ -307,80 +295,75 @@ loadEmailJS(async function () {
     if (phoneInp) phoneInp.addEventListener('blur', function () { vPhone(phoneInp); });
     if (emailInp) emailInp.addEventListener('blur', function () { vEmail(emailInp); });
 
-    /* FIX: сбрасываем таймер при любом взаимодействии с формой  */
     form.addEventListener('focusin',   function () { contactT0 = Date.now(); }, { once: true });
     form.addEventListener('mousedown', function () { contactT0 = Date.now(); }, { once: true });
   }
 
- window.submitContact = function (e) {
-  e.preventDefault();
+  /* ── CONTACT SUBMIT ──────────────────────────────────────────── */
+  window.submitContact = function (e) {
+    e.preventDefault();
 
-  var form = e.target;
-  var succ = document.getElementById('contactSuccess');
-  var btn = form.querySelector('button[type="submit"]');
-  var orig = btn ? btn.textContent : '';
+    var form      = e.target;
+    var succ      = document.getElementById('contactSuccess');
+    var btn       = form.querySelector('button[type="submit"]');
+    var orig      = btn ? btn.innerHTML : '';
 
-  var nameInp   = form.querySelector('#cf-name');
-  var phoneInp  = form.querySelector('#cf-phone');
-  var emailInp  = form.querySelector('#cf-email');
-  var msgArea   = form.querySelector('#cf-msg');
-  var branchSel = form.querySelector('#cf-branch');
+    var nameInp   = form.querySelector('#cf-name');
+    var phoneInp  = form.querySelector('#cf-phone');
+    var emailInp  = form.querySelector('#cf-email');
+    var msgArea   = form.querySelector('#cf-msg');
+    var branchSel = form.querySelector('#cf-branch');
 
-  if (succ) succ.hidden = true;
+    if (succ) succ.hidden = true;
+    var old = form.querySelector('.form-msg'); if (old) old.remove();
 
-  if (!(vName(nameInp) && vPhone(phoneInp) && vEmail(emailInp))) {
-    return;
-  }
-
-  if (btn) {
-    btn.disabled = true;
-    btn.textContent = 'Отправляем…';
-  }
-
-  showMsg(form, 'spin', 'Отправляем…');
-
-  loadEmailJS(function () {
-
-    sendEmail({
-      from_name: nameInp.value.trim(),
-      phone: getFullPhone(phoneInp),
-      email: emailInp.value.trim(),
-      message: msgArea.value.trim(),
-      branch: branchSel && branchSel.value
-        ? branchSel.options[branchSel.selectedIndex].text
-        : 'Не выбран',
-      category: ''
-    })
-    .then(function (res) {
-
-      console.log('SUCCESS', res);
-
-      form.reset();
-
-      var m = form.querySelector('.form-msg');
-      if (m) m.remove();
-
+    if (isBot(form, contactT0)) {
       if (btn) btn.style.display = 'none';
       if (succ) succ.hidden = false;
+      else showMsg(form, 'ok', 'Сообщение отправлено! Мы свяжемся с вами в ближайшее время.');
+      form.reset();
+      return;
+    }
 
-    })
-    .catch(function (err) {
+    if (!vName(nameInp) || !vPhone(phoneInp) || !vEmail(emailInp)) {
+      return;
+    }
 
-      console.error('EMAIL ERROR:', err);
+    if (btn) { btn.disabled = true; btn.innerHTML = ICO.spin + ' Отправляем…'; }
+    showMsg(form, 'spin', 'Отправляем…');
 
-      var m = form.querySelector('.form-msg');
-      if (m) m.remove();
-
-      showMsg(form, 'err', 'Ошибка отправки');
-
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = orig;
-      }
+    loadEmailJS(function () {
+      sendEmail({
+        from_name: nameInp  ? nameInp.value.trim()  : '',
+        phone:     getFullPhone(phoneInp),
+        email:     emailInp ? emailInp.value.trim()  : '',
+        message:   msgArea  ? msgArea.value.trim()   : '',
+        branch:    branchSel && branchSel.value
+                     ? branchSel.options[branchSel.selectedIndex].text
+                     : 'Не выбран',
+        category: ''
+      })
+      .then(function (res) {
+        console.log('[Laura] Contact SUCCESS', res);
+        form.reset();
+        var m = form.querySelector('.form-msg'); if (m) m.remove();
+        if (btn) btn.style.display = 'none';
+        if (succ) {
+          succ.hidden = false;
+        } else {
+          /* Если блока contactSuccess нет в HTML — показываем встроенное сообщение */
+          showMsg(form, 'ok', 'Сообщение отправлено! Мы свяжемся с вами в ближайшее время.');
+          if (btn) { btn.style.display = ''; btn.disabled = false; btn.innerHTML = orig; }
+        }
+      })
+      .catch(function (err) {
+        console.error('[Laura] Contact ERROR:', err);
+        var m = form.querySelector('.form-msg'); if (m) m.remove();
+        showMsg(form, 'err', 'Ошибка отправки. Попробуйте ещё раз или позвоните нам: 8 (812) 338-10-08');
+        if (btn) { btn.disabled = false; btn.innerHTML = orig; }
+      });
     });
-
-  });
-};
+  };
 
   /* ── BRANCH TABS ─────────────────────────────────────────────── */
   document.querySelectorAll('.branch-tab').forEach(function (tab) {
