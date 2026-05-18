@@ -244,7 +244,7 @@
     if (!ok) { showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.'); return; }
 
     if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
-    showMsg(form, 'wait', 'Отправляем заявку…');
+  showMsg(form, 'spin', 'Отправляем заявку…');
 
     loadEmailJS(function () {
       sendEmail({
@@ -320,7 +320,7 @@
     if (!ok) { showMsg(form, 'err', 'Пожалуйста, исправьте ошибки выше.'); return; }
 
     if (btn) { btn.disabled = true; btn.textContent = 'Отправляем…'; }
-    showMsg(form, 'wait', 'Отправляем…');
+    showMsg(form, 'spin', 'Отправляем…');
 
     loadEmailJS(function () {
       sendEmail({
