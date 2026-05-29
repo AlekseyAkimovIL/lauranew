@@ -55,8 +55,6 @@ address   { font-style: normal; }
   font-weight: 600; line-height: 1.15; letter-spacing: -.03em; color: var(--tx1);
 }
 
-
-
 /* ── BUTTONS ───────────────────────────────────────────────── */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
@@ -377,11 +375,6 @@ address   { font-style: normal; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .spin { animation: spin .8s linear infinite; }
 
-.form-msg--ok   { ... }
-.form-msg--err  { ... }
-.form-msg--wait { ... }
-
-.form-msg--spin { background: var(--surface-alt); border: 1px solid var(--bd); color: var(--tx2)};
 /* ── PAGE HERO (inner pages) ────────────────────────────────── */
 .pg-hero  {
   position: relative; background: var(--bg);
@@ -556,10 +549,7 @@ address   { font-style: normal; }
   flex: 1;
   min-width: 0;
 }
-.form-success { display: none; align-items: center; gap: .625rem; padding: 1rem 1.25rem; background: #f0f9f3; border: 1px solid #9fd8b0; border-radius: var(--r-md); font-size: .875rem; font-weight: 500; color: #3b6d11; margin-top: 1rem; }
-.form-success:not([hidden]){
-  display:flex;
-}
+.form-success { display: flex; align-items: center; gap: .625rem; padding: 1rem 1.25rem; background: #f0f9f3; border: 1px solid #9fd8b0; border-radius: var(--r-md); font-size: .875rem; font-weight: 500; color: #3b6d11; margin-top: 1rem; }
 
 /* ── REVIEWS ─────────────────────────────────────────────────── */
 .rev-stats { display: flex; align-items: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; }
@@ -784,112 +774,4 @@ address   { font-style: normal; }
 }
 @media (max-width: 640px) {
   .ya-reviews-grid { grid-template-columns: 1fr; }
-}
-
-/* ── PHONE FIELD WITH +7 PREFIX ── */
-.phone-wrap {
-  display: flex;
-  align-items: stretch;
-  border: 1.5px solid var(--bd-md);
-  border-radius: var(--r-md);
-  overflow: hidden;
-  transition: border-color var(--ease), box-shadow var(--ease);
-  background: var(--bg);
-}
-.phone-wrap:focus-within {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(212,64,26,.12);
-}
-.phone-prefix {
-  display: flex;
-  align-items: center;
-  padding: 0 .875rem;
-  background: var(--surface-alt);
-  font-family: var(--fb);
-  font-size: .9375rem;
-  font-weight: 600;
-  color: var(--tx1);
-  border-right: 1.5px solid var(--bd-md);
-  white-space: nowrap;
-  user-select: none;
-}
-.phone-inp {
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  flex: 1;
-  min-width: 0;
-}
-.phone-inp:focus { box-shadow: none !important; }
-
-/* Field error message */
-.field__err {
-  display: block;
-  font-size: .75rem;
-  color: #c0392b;
-  margin-top: .25rem;
-  min-height: 1em;
-  font-weight: 500;
-}
-
-/* Highlight invalid field */
-.field__inp--err,
-.phone-wrap--err {
-  border-color: #e74c3c !important;
-  box-shadow: 0 0 0 3px rgba(231,76,60,.12) !important;
-}
-
-/* ── YANDEX REVIEWS WIDGET CARDS ── */
-.ya-reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.ya-card {
-  background: var(--surface);
-  border: 1px solid var(--bd);
-  border-radius: var(--r-xl);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: box-shadow var(--ease), transform var(--ease);
-}
-.ya-card:hover { box-shadow: var(--sh-hover); transform: translateY(-3px); }
-.ya-card__header {
-  display: flex;
-  align-items: center;
-  gap: .875rem;
-  padding: 1.25rem 1.25rem .875rem;
-}
-.ya-card__icon {
-  width: 40px; height: 40px; flex-shrink: 0;
-  background: #fff5f3; border-radius: var(--r-md);
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid rgba(252,63,29,.15);
-}
-.ya-card__city { font-family: var(--fh); font-size: .875rem; font-weight: 700; color: var(--tx1); }
-.ya-card__addr { font-size: .75rem; color: var(--tx3); margin-top: .125rem; }
-.ya-card__iframe-wrap { flex: 1; position: relative; min-height: 360px; }
-.ya-card__iframe-wrap iframe { display: block; width: 100%; height: 100%; min-height: 360px; border: 0; }
-.ya-card__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  padding: .875rem 1.25rem;
-  background: var(--bg);
-  border-top: 1px solid var(--bd);
-  font-size: .8125rem;
-  font-weight: 600;
-  color: var(--accent);
-  transition: background var(--ease);
-  text-decoration: none;
-}
-.ya-card__link:hover { background: var(--accent-lt); }
-.ya-card__link svg { flex-shrink: 0; }
-
-@media (max-width: 860px) {
-  .ya-reviews-grid { grid-template-columns: 1fr; }
-  .ya-card__iframe-wrap { min-height: 320px; }
-  .ya-card__iframe-wrap iframe { min-height: 320px; }
 }

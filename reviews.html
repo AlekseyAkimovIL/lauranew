@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Отзывы — Автошкола «Лаура»</title>
-  <meta name="description" content="Отзывы учеников автошколы Лаура">
+  <title>Автошкола «Лаура» — Автошкола «Лаура»</title>
+  <meta name="description" content="Профессиональная подготовка водителей категории A и B в Петергофе, Ломоносове и Сосновом Бору">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -19,10 +19,10 @@
       </a>
       <nav class="header__nav" aria-label="Основная навигация">
         <ul class="nav__list">
-          <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+          <li class="nav__item"><a href="index.html" class="nav__link  nav__link--active">Главная</a></li>
           <li class="nav__item"><a href="start.html" class="nav__link">Начать обучение</a></li>
           <li class="nav__item"><a href="schedule.html" class="nav__link">Расписание</a></li>
-          <li class="nav__item"><a href="reviews.html" class="nav__link  nav__link--active">Отзывы</a></li>
+          <li class="nav__item"><a href="reviews.html" class="nav__link">Отзывы</a></li>
           <li class="nav__item"><a href="contacts.html" class="nav__link">Контакты</a></li>
         </ul>
       </nav>
@@ -49,174 +49,307 @@
     </div>
   </header>
   <main>
-    <section class="pg-hero">
-      <div class="pg-hero__grid" aria-hidden="true"></div>
-      <div class="container pg-hero__wrap">
-        <span class="section__label">Мнения учеников</span>
-        <h1 class="pg-hero__title">Отзывы</h1>
-        <p class="pg-hero__sub">Настоящие слова настоящих людей — тех, кто уже получил права вместе с нами.</p>
-        <div class="rev-stats">
-          <div class="rev-stat">
-            <div class="rev-stars"><svg width="20" height="20" viewBox="0 0 20 20" fill="#d4401a"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="20" height="20" viewBox="0 0 20 20" fill="#d4401a"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="20" height="20" viewBox="0 0 20 20" fill="#d4401a"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="20" height="20" viewBox="0 0 20 20" fill="#d4401a"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg><svg width="20" height="20" viewBox="0 0 20 20" fill="#d4401a"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg></div>
-            <span class="rev-stat__lbl">Оценка учеников</span>
+    <section class="hero">
+      <div class="hero__bg-grid" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+      <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="badge"><span class="badge__dot"></span>Набор открыт</div>
+          <h1 class="hero__title">Хватит ходить<br><em>пешком</em></h1>
+          <p class="hero__sub">Профессиональная подготовка водителей категорий A и B в Петергофе, Ломоносове и Сосновом Бору</p>
+          <div class="prices">
+            <div class="prices__item">
+              <span class="prices__cat">Категория B</span>
+              <span class="prices__val">55 000 ₽</span>
+              <span class="prices__note">МКПП и АКПП</span>
+            </div>
+            <div class="prices__div" aria-hidden="true"></div>
+            <div class="prices__item">
+              <span class="prices__cat">Категория A</span>
+              <span class="prices__val">33 000 ₽</span>
+              <span class="prices__note">мотоцикл</span>
+            </div>
           </div>
-          <div class="rev-stat__div" aria-hidden="true"></div>
-          <a href="https://vk.com/lauraschool" target="_blank" rel="noopener" class="rev-stat" style="text-decoration:none">
-            <span class="rev-stat__num" style="color:var(--accent)">ВКонтакте</span>
-            <span class="rev-stat__lbl">Перейти в нашу группу →</span>
-          </a>
+          <div class="hero__trial">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v3.5L10 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Пробное занятие — бесплатно
+          </div>
+          <div class="hero__actions">
+            <button class="btn btn--primary btn--large" onclick="openModal()">Записаться на обучение</button>
+            <a href="start.html" class="btn btn--outline btn--large">Начать обучение</a>
+          </div>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="card-car">
+            <div class="card-car__label">Ваш учебный автомобиль</div>
+            <div class="card-car__model">Škoda Octavia</div>
+            <div class="card-car__tags">
+              <span class="tag">МКПП</span><span class="tag">АКПП</span>
+            </div>
+            <div class="card-car__icon">
+              <svg viewBox="0 0 120 58" fill="none">
+                <rect x="10" y="26" width="100" height="22" rx="6" fill="currentColor" opacity=".12"/>
+                <path d="M18 26L34 12L86 12L102 26" stroke="currentColor" stroke-width="2" fill="none"/>
+                <rect x="10" y="26" width="100" height="20" rx="5" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="30" cy="48" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="30" cy="48" r="3" fill="currentColor" opacity=".4"/>
+                <circle cx="90" cy="48" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                <circle cx="90" cy="48" r="3" fill="currentColor" opacity=".4"/>
+                <line x1="37" y1="12" x2="37" y2="26" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="60" y1="12" x2="60" y2="26" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="83" y1="12" x2="83" y2="26" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="stat-cards">
+            <div class="stat-card"><span class="stat-card__num">12</span><span class="stat-card__label">инструкторов</span></div>
+            <div class="stat-card"><span class="stat-card__num">3</span><span class="stat-card__label">филиала</span></div>
+            <div class="stat-card"><span class="stat-card__num">2020</span><span class="stat-card__label">год основания</span></div>
+          </div>
         </div>
       </div>
+      <a href="#advantages" class="hero__scroll" aria-label="Прокрутить вниз">
+        <span>Листать вниз</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </section>
 
-        <section class="section" style="background:var(--bg)">
+    <section class="advantages section" id="advantages">
       <div class="container">
         <div class="section__header">
-          <span class="section__label">Отзывы на Яндекс Картах</span>
-          <h2 class="section__title">Реальные отзывы наших учеников</h2>
+          <span class="section__label">Почему Лаура</span>
+          <h2 class="section__title">Всё для вашего успешного обучения</h2>
         </div>
-        <div class="ya-reviews-grid">
+        <ul class="adv-grid" role="list">
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><rect x="4" y="26" width="32" height="10" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 26V20a2 2 0 012-2h20a2 2 0 012 2v6" stroke="currentColor" stroke-width="1.8"/><circle cx="20" cy="10" r="5" stroke="currentColor" stroke-width="1.8"/></svg></div><h3 class="adv-card__title">Собственный автодром</h3><p class="adv-card__text">Оборудован для отработки всех элементов вождения — от парковки до сложных манёвров.</p></li>
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><path d="M20 4l4 8 9 1.3-6.5 6.3 1.5 9L20 24l-8 4.6 1.5-9L7 13.3l9-1.3L20 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><h3 class="adv-card__title">Экзамен в ГИБДД</h3><p class="adv-card__text">Сдаёте на своём учебном автомобиле по знакомому маршруту в Ломоносове.</p></li>
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><rect x="6" y="8" width="28" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M13 32h14M20 28v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><h3 class="adv-card__title">Дистанционное обучение</h3><p class="adv-card__text">Теорию можно изучать онлайн в любое удобное время без посещения класса.</p></li>
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="14" cy="16" r="5" stroke="currentColor" stroke-width="1.8"/><circle cx="26" cy="16" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M4 34c0-5.5 4.5-10 10-10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M22 24c5.5 0 10 4.5 10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><h3 class="adv-card__title">Маленькие группы</h3><p class="adv-card__text">Небольшие группы гарантируют индивидуальный подход к каждому ученику.</p></li>
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M20 6v4M20 30v4M6 20h4M30 20h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><h3 class="adv-card__title">Всё продумано</h3><p class="adv-card__text">Организуем учебный процесс так, чтобы вы сосредоточились на обучении.</p></li>
+          <li class="adv-card"><div class="adv-card__icon"><svg viewBox="0 0 40 40" fill="none"><path d="M8 14h24M8 20h16M8 26h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="4" y="6" width="32" height="28" rx="4" stroke="currentColor" stroke-width="1.8"/></svg></div><h3 class="adv-card__title">Учебный класс</h3><p class="adv-card__text">Оборудован всем необходимым — проектор, стенды, актуальные ПДД.</p></li>
+        </ul>
+      </div>
+    </section>
 
-          <div class="ya-card">
-            <div class="ya-card__header">
-              <div class="ya-card__icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#FC3F1D"/><circle cx="12" cy="9" r="2.5" fill="#fff"/></svg>
-              </div>
-              <div>
-                <div class="ya-card__city">Петергоф</div>
-                <div class="ya-card__addr">пр. Санкт-Петербургский, 60</div>
-              </div>
-            </div>
-            <div class="ya-card__iframe-wrap">
-              <iframe
-                src="https://yandex.ru/maps-reviews-widget/135411610586?comments"
-                title="Отзывы — Петергоф"
-                allowfullscreen
-                loading="lazy">
-              </iframe>
-            </div>
-            <a class="ya-card__link"
-               href="https://yandex.ru/maps/org/avtoshkola_laura/135411610586/reviews/"
-               target="_blank" rel="noopener">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Все отзывы на Яндекс Картах
-            </a>
+    <section class="why section">
+      <div class="container why__grid">
+        <div>
+          <span class="section__label">Наш подход</span>
+          <h2 class="section__title">Учим, а не просто «откатываем часы»</h2>
+          <div class="why__pts">
+            <div class="why__pt"><div class="why__num">01</div><p>Опытные педагоги находят индивидуальный подход к каждому ученику</p></div>
+            <div class="why__pt"><div class="why__num">02</div><p>Обучаем грамотному соблюдению ПДД и безопасному поведению на дороге</p></div>
+            <div class="why__pt"><div class="why__num">03</div><p>Учим ориентироваться в сложной обстановке и предотвращать аварии</p></div>
+            <div class="why__pt"><div class="why__num">04</div><p>Гарантируем подготовку уверенного водителя из каждого нашего ученика</p></div>
           </div>
-
-          <div class="ya-card">
-            <div class="ya-card__header">
-              <div class="ya-card__icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#FC3F1D"/><circle cx="12" cy="9" r="2.5" fill="#fff"/></svg>
-              </div>
-              <div>
-                <div class="ya-card__city">Ломоносов</div>
-                <div class="ya-card__addr">ул. Победы, 24</div>
-              </div>
-            </div>
-            <div class="ya-card__iframe-wrap">
-              <iframe
-                src="https://yandex.ru/maps-reviews-widget/29946102445?comments"
-                title="Отзывы — Ломоносов"
-                allowfullscreen
-                loading="lazy">
-              </iframe>
-            </div>
-            <a class="ya-card__link"
-               href="https://yandex.ru/maps/org/avtoshkola_laura/29946102445/reviews/"
-               target="_blank" rel="noopener">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Все отзывы на Яндекс Картах
-            </a>
-          </div>
-
-          <div class="ya-card">
-            <div class="ya-card__header">
-              <div class="ya-card__icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#FC3F1D"/><circle cx="12" cy="9" r="2.5" fill="#fff"/></svg>
-              </div>
-              <div>
-                <div class="ya-card__city">Сосновый Бор</div>
-                <div class="ya-card__addr">ул. Петра Великого, 10а</div>
-              </div>
-            </div>
-            <div class="ya-card__iframe-wrap">
-              <iframe
-                src="https://yandex.ru/maps-reviews-widget/11865266279?comments"
-                title="Отзывы — Сосновый Бор"
-                allowfullscreen
-                loading="lazy">
-              </iframe>
-            </div>
-            <a class="ya-card__link"
-               href="https://yandex.ru/maps/org/avtoshkola_laura/11865266279/reviews/"
-               target="_blank" rel="noopener">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Все отзывы на Яндекс Картах
-            </a>
-          </div>
-
+          <a href="start.html" class="btn btn--primary">Начать обучение</a>
+        </div>
+        <div class="gal-grid">
+          <div class="gal-item gal-item--tall"><img src="img/gallery/les1.jpg" alt="Урок вождения" loading="lazy"></div>
+          <div class="gal-item"><img src="img/gallery/together.jpeg" alt="Команда" loading="lazy"></div>
+          <div class="gal-item"><img src="img/gallery/students.jpg" alt="Ученики" loading="lazy"></div>
         </div>
       </div>
     </section>
-    <section class="section" style="background:var(--surface)">
+    <section class="team section" id="team">
       <div class="container">
-        <div class="vk-section">
-          <div>
-            <div class="vk-logo">
-            <svg 
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 455 455"
-    fill="none"
-  >
-    <rect width="455" height="455" rx="60" fill="#0077FF"/>
+        <div class="section__header">
+          <span class="section__label">Наша команда</span>
+          <h2 class="section__title">Люди, которые вас учат</h2>
+        </div>
 
-    <path 
-      fill="white"
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      d="M341.098,251.727c10.445,10.19,21.49,19.784,30.865,31.049
-      c4.142,4.978,8.06,10.113,11.046,15.881c4.239,8.264,0.397,17.318-6.985,17.817l-45.875-0.02
-      c-11.841,0.973-21.277-3.801-29.235-11.902c-6.328-6.45-12.243-13.354-18.352-20.023c-2.486-2.746-5.115-5.314-8.239-7.362
-      c-6.267-4.061-11.703-2.828-15.285,3.699c-3.643,6.649-4.499,14.031-4.835,21.435c-0.499,10.807-3.76,13.634-14.607,14.154
-      c-23.208,1.075-45.218-2.451-65.659-14.134c-18.052-10.307-32.022-24.879-44.184-41.356
-      c-23.702-32.124-41.855-67.391-58.154-103.673c-3.684-8.177-0.993-12.559,7.999-12.717c14.99-0.296,29.974-0.26,44.943-0.02
-      c6.089,0.102,10.129,3.582,12.458,9.334c8.101,19.906,18.01,38.85,30.448,56.427c3.327,4.677,6.71,9.334,11.504,12.636
-      c5.314,3.663,9.375,2.466,11.881-3.485c1.595-3.78,2.293-7.8,2.629-11.841c1.192-13.833,1.335-27.681-0.718-41.473
-      c-1.274-8.621-6.149-14.195-14.745-15.825c-4.382-0.836-3.725-2.446-1.615-4.958c3.704-4.315,7.189-7.006,14.093-7.006h51.847
-      c8.177,1.595,10.011,5.278,11.122,13.497l0.041,57.619c-0.097,3.184,1.595,12.615,7.306,14.704
-      c4.575,1.513,7.622-2.171,10.368-5.075c12.417-13.176,21.277-28.756,29.194-44.877c3.505-7.087,6.532-14.449,9.477-21.817
-      c2.17-5.452,5.553-8.137,11.703-8.04l49.916,0.061c1.472,0,2.986,0,4.438,0.239c8.396,1.452,10.705,5.075,8.096,13.293
-      c-4.076,12.875-12.06,23.625-19.84,34.391c-8.341,11.525-17.216,22.647-25.495,34.233
-      C331.087,237.201,331.683,242.535,341.098,251.727z"
-    />
-  </svg>
+        <div class="team-group">
+          <h3 class="team-group__title"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg> Руководство</h3>
+          <ul class="instr-grid instr-grid--leaders" role="list">
+          <li class="instr-card instr-card--leader">
+            <div class="instr-card__photo"><img src="img/team/Romanovsky.jpg" alt="Романовский Роман Александрович — директор автошколы Лаура" loading="lazy"></div>
+            <div class="instr-card__body">
+              <div class="instr-card__role">Генеральный директор</div>
+              <h3 class="instr-card__name">Романовский<br>Роман Александрович</h3>
             </div>
-            <span class="section__label">Официальная группа</span>
-            <h2 class="section__title" style="margin-top:.5rem">Читайте свежие отзывы во ВКонтакте</h2>
-            <p style="color:var(--tx2);font-size:.9375rem;line-height:1.65;margin-top:1rem">Все отзывы — в нашей официальной группе ВКонтакте. Там же можно задать вопрос и оставить свой отзыв после обучения.</p>
-            <div class="vk-btns">
-              <a href="https://vk.com/topic-187835462_40438621" target="_blank" rel="noopener" class="btn btn--primary btn--large">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.547 7h-3.29a.743.743 0 00-.655.392s-1.312 2.416-1.734 3.23C14.734 12.813 14 12.126 14 11.11V7.603A1.104 1.104 0 0012.896 6.5h-2.474a1.982 1.982 0 00-1.75.813s1.255-.204 1.255 1.49c0 .42.022 1.626.04 2.64a.73.73 0 01-1.272.503 21.54 21.54 0 01-2.498-4.543.693.693 0 00-.63-.403h-2.99a.508.508 0 00-.48.685C3.005 10.175 6.918 18 11.38 18h1.878a.742.742 0 00.742-.742v-1.135a.73.73 0 011.23-.53l2.247 2.112a1.09 1.09 0 00.746.295h2.953c1.424 0 1.424-.988.647-1.753-.546-.538-2.518-2.617-2.518-2.617a1.02 1.02 0 01-.078-1.323c.637-.84 1.68-2.212 2.122-2.8.603-.804 1.697-2.507.197-2.507z"/></svg>
-                Все отзывы
-              </a>
-              <a href="https://vk.com/lauraschool" target="_blank" rel="noopener" class="btn btn--outline btn--large">Группа ВКонтакте</a>
+          </li>
+          <li class="instr-card instr-card--leader">
+            <div class="instr-card__photo"><img src="img/team/Bolshakov.jpg" alt="Большаков Павел Яковлевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <div class="instr-card__role">Заместитель директора</div>
+              <h3 class="instr-card__name">Большаков<br>Павел Яковлевич</h3>
             </div>
-          </div>
-          <div class="vk-widget-wrap">
-            <div id="vk_groups"></div>
-            <script>
-              (function(){
-                var d=document,s=d.createElement('script');
-                s.src='https://vk.com/js/api/openapi.js?169';
-                s.async=true;
-                s.onload=function(){
-                  try{ VK.Widgets.Group('vk_groups',{mode:4,wide:1,color1:'FFFFFF',color2:'000000',color3:'D4401A'},187835462); }catch(e){}
-                };
-                (d.head||d.body).appendChild(s);
-              })();
-            </script>
-          </div>
+          </li>
+          </ul>
+        </div>
+
+        <div class="team-group">
+          <h3 class="team-group__title"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> Преподаватели теории</h3>
+          <ul class="instr-grid instr-grid--teach" role="list">
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Orlov.jpg" alt="Орлов Николай Иванович" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Орлов<br>Николай Иванович</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2001 г.</li>
+                <li><span>Стаж вождения с</span> 1979 г.</li>
+                <li><span>Образование</span> ЛенВОКУ им. С.М. Кирова, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span><span class="cat">D</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Chichenko.jpg" alt="Чиченко Олег Владимирович" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Чиченко<br>Олег Владимирович</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2014 г.</li>
+                <li><span>Стаж вождения с</span> 1980 г.</li>
+                <li><span>Образование</span> ЛенВОКУ им. С.М. Кирова, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span></div></li>
+              </ul>
+            </div>
+          </li>
+          </ul>
+        </div>
+
+        <div class="team-group">
+          <h3 class="team-group__title"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg> Инструкторы по вождению</h3>
+          <ul class="instr-grid" role="list">
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Konstantinov.jpg" alt="Константинов Владимир Андреевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Константинов<br>Владимир Андреевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2020 г.</li>
+                <li><span>Стаж вождения с</span> 2012 г.</li>
+                <li><span>Образование</span> СПбГЛТА, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">B</span><span class="cat">C</span><span class="cat">D</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Beketov.jpg" alt="Бекетов Герман Сергеевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Бекетов<br>Герман Сергеевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2020 г.</li>
+                <li><span>Стаж вождения с</span> 2010 г.</li>
+                <li><span>Образование</span> СПбГАУ, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Serov.jpg" alt="Серов Илья Владимирович" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Серов<br>Илья Владимирович</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2020 г.</li>
+                <li><span>Стаж вождения с</span> 2010 г.</li>
+                <li><span>Образование</span> МГУТУ, технолог</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Grigoriev.jpg" alt="Григорьев Дмитрий Сергеевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Григорьев<br>Дмитрий Сергеевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2017 г.</li>
+                <li><span>Стаж вождения с</span> 2005 г.</li>
+                <li><span>Образование</span> Смольный РАО, экономист</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span><span class="cat">D</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Plotnikov.jpg" alt="Плотников Борис Владимирович" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Плотников<br>Борис Владимирович</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2010 г.</li>
+                <li><span>Стаж вождения с</span> 2005 г.</li>
+                <li><span>Образование</span> СГАУ им. Вавилова, инженер-механик</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">B</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Burtsev.jpg" alt="Бурцев Андрей Юрьевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Бурцев<br>Андрей Юрьевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2022 г.</li>
+                <li><span>Стаж вождения с</span> 1988 г.</li>
+                <li><span>Образование</span> СПбГАСУ, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">B</span><span class="cat">C</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Polatov.jpg" alt="Полатов Азатбай Жумаевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Полатов<br>Азатбай Жумаевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 1990 г.</li>
+                <li><span>Стаж вождения с</span> 1979 г.</li>
+                <li><span>Образование</span> ЛПИ им. М.И. Калинина, инженер</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span><span class="cat">D</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo"><img src="img/team/Vorobiev.jpg" alt="Воробьев Александр Сергеевич" loading="lazy"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Воробьев<br>Александр Сергеевич</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2016 г.</li>
+                <li><span>Стаж вождения с</span> 2002 г.</li>
+                <li><span>Образование</span> Высшее, СПбГАСУ (инженер)</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">A</span><span class="cat">B</span><span class="cat">C</span><span class="cat">D</span><span class="cat">E</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+            <div class="instr-card__photo "><img src="img/team/Alena.jpg"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Федорова<br>Алёна Кирилловна</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2025 г.</li>
+                <li><span>Стаж вождения с</span> 2011 г.</li>
+                <li><span>Образование</span> МУ им. С.Ю. Витте, гос. и муниц. управление</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">B</span></div></li>
+              </ul>
+            </div>
+          </li>
+          <li class="instr-card">
+               <div class="instr-card__photo "><img src="img/team/Katya.jpg"></div>
+            <div class="instr-card__body">
+              <h3 class="instr-card__name">Смирнова<br>Екатерина Витальевна</h3>
+              <ul class="instr-card__info">
+                <li><span>Преподаёт с</span> 2023 г.</li>
+                <li><span>Стаж вождения с</span> 2021 г.</li>
+                <li><span>Образование</span> СПбГУПТД, экономист</li>
+                <li><span>Категории</span><div class="instr-card__cats"><span class="cat">B</span><span class="cat">C</span></div></li>
+              </ul>
+            </div>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="photo-gallery section">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__label">Фотогалерея</span>
+          <h2 class="section__title">Наши фотографии</h2>
+        </div>
+        <div class="photo-grid">
+          <div class="photo-item"><img src="img/gallery/students-2.jpg" alt="Ученики" loading="lazy"></div>
+          <div class="photo-item photo-item--wide"><img src="img/gallery/process.jpg" alt="Процесс обучения" loading="lazy"></div>
+          <div class="photo-item"><img src="img/gallery/students-3.jpg" alt="Студенты" loading="lazy"></div>
+          <div class="photo-item photo-item--wide"><img src="img/gallery/les2.jpg" alt="Урок" loading="lazy"></div>
+          <div class="photo-item"><img src="img/gallery/students-4.jpg" alt="Обучение" loading="lazy"></div>
+          <div class="photo-item"><img src="img/gallery/les3.jpg" alt="Занятие" loading="lazy"></div>
         </div>
       </div>
     </section>
@@ -224,7 +357,7 @@
       <div class="container cta__inner">
         <div class="cta__body">
           <h2 class="cta__title">Начни учиться<br>уже сегодня</h2>
-          <p class="cta__text">Набор идёт всегда, приходите, когда удобно.</p>
+          <p class="cta__text">Набор идёт всегда, приходите, когда удобно. Пробное занятие — бесплатно.</p>
           <div class="cta__btns">
             <button class="btn btn--white btn--large" onclick="openModal()">Записаться на курс</button>
             <a href="tel:88123381008" class="btn btn--outline-white btn--large">8 (812) 338-10-08</a>
@@ -285,6 +418,7 @@
       </div>
     </div>
   </footer>
+   <!-- MODAL -->
   <!-- MODAL -->
   <div class="modal-overlay" id="modalOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Запись на курс">
     <div class="modal">
